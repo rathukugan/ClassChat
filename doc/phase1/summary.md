@@ -13,5 +13,4 @@ Improve student-professor interaction during class time and help professor to be
 
 ###Principles
 **Key Principle 1:** An equal opportunity to learn should be offered to all students regardless of their personality. Interaction between professor and student is a critical part of the learning experience. Thus, questions should be actively sought out for in any form possible.
-this one is all over the place
 **Key Principle 2:** The professor lecturing should always account for student understanding. Judging from the type and frequency of the questions asked, the professor can correctly gauge what concepts need to be explained further and can correctly. This application should be able to be used as a tool to improve teaching proficiency.
