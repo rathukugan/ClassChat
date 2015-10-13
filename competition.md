@@ -1,0 +1,11 @@
+## Existing products that solve the same (or similar) problem
+
+[Socrative by MasteryConnect](http://www.socrative.com)
+- An online assessment tool for the classroom, that allows the teacher to create a pre-prepared quiz for students or conduct live quick questions, including multiple choice, true/false and short answer. Students can use the web or iOS/Android and can simply join by using the teachers room code as opposed to a log in. The teacher can see in real time the answers to the questions, with other real time analytics.
+
+Similarly, to Socrative, our app will support students answering questions. However, our product is different because a bigger focus is put on the ability for students (potentially anonymous) to ask questions to the professor, with a rating system the class can use to agree on the best ones to ask.
+
+
+Socrative feels more generated to grade school style learning, where teachers have the ability to bond with a small classroom which is enhanced by this app. This is why our product will be better for college/university students who are in large lectures with a single professor.
+
+I think competitors don’t focus on these users because it might be easier for grade school classrooms to adapt to this technology. The key difference being that teachers must do their best to provide incentive to get kids to learn, where as in post-secondary education all students want to learn. Grade school teachers can use Socrative to increase interactivity where as university students are used to the dull system of iClicker. Our product would give a more interactive feel as opposed to iClicker, implementing the style of interactivity a grade school classroom may get from Socrative.  The university mentality is that students must raise their hand and ask questions, but the reality is that often the best questions don’t get asked and generally there is no time for many questions with the large amounts of students. Professors would have to adapt to more question/answer periods and this change is something that competitors may feel is too tough of a scenario to break through. It would likely take a new generation of professors who understand the undergraduate student, and would be willing to use technology to help enhance it.
