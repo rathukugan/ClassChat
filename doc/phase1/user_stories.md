@@ -9,12 +9,12 @@ As a clueless, extroverted student I want to ask a low - level question while be
 **Priority:** high
 **Difficulty:** low
 
-As an instructor I want to encourage all members of the class to have an equal oppourtunity to ask questions so that each student feels like they understand the material.
+As an instructor I want to encourage all members of the class to have an equal opportunity  to ask questions so that each student feels like they understand the material.
 
 **Priority:** high
 **Difficulty:** low
 
-As an exceptional, shy student I want to ask a high - level question without distrupting the class to furthur my understanding and interest in the subject. 
+As an exceptional, shy student I want to ask a high - level question without disrupting  the class to further my understanding and interest in the subject. 
 
 **Priority:** med
 **Difficulty:** med
@@ -29,7 +29,7 @@ As an overwhelmed student I want to see what questions other students are asking
 **Priority:** med
 **Difficulty:** med
 
-As an instructor I want to be able to pick and choose the best questions to answer that is relevant to the material so that I can make the best use of my limited lecture time.
+As an instructor I want to be able to pick and choose the best questions to answer that is relevant to the material, so that I can make the best use of my limited lecture time.
 
 **Priority:** low
 **Difficulty:** high
