@@ -1,4 +1,4 @@
-###process.md
+##Process
 All the members of our team worked very well together. During our first meeting, we discussed very clearly on how to establish an open, non-hostile environment. For instance, we emphasized the importance of communication skills among the group. Not only should individuals express their ideas without having to feel threatened, listening carefully to others matter as well. We felt that it was one of the most essential topics to discuss because it will definitely set a tone to the rest of the semester. 
 
 
