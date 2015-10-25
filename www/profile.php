@@ -74,11 +74,7 @@ function process_date($raw_date) {
             <br>
             <br>
             <div class= 'text-center'>
-	            <h2 class="title text-center profile_headings">Welcome to<?=$name?>!</h2>
-
-				<div id="basic_info">
-					<p id="join_date">Date Joined: <?=$date?></p>
-				</div>
+	            <h2 class="title text-center profile_headings">Welcome <?=$name?>!</h2>
 				<div id="profile_projects">
 					<h2 class="profile_headings">My Classes</h2>
 					<?php

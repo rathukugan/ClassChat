@@ -17,7 +17,7 @@
                         	<p><br/><a href="create.php" class="btn btn-theme">New Class</a></p>
 	                    </div>
 	                    <div class="col-lg-6">
-	                        <p><br/><a href="browse.php" class="btn btn-theme">New Lecture Session</a></p>
+	                        <p><br/><a href="#" class="btn btn-theme">New Lecture Session</a></p>
 	                    </div>
 	                    <?
                     } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){
