@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['class'] = "$code";
 
             //go to class page
-            header ("Location: class.php?id=" . $id);
+            header ("Location: class.php?code=" . $code);
             
         }
     }

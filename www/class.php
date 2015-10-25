@@ -1,51 +1,5 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/
 ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        $(".like").click(function()
-        {
-            var id=$(this).attr("id");
-            var name=$(this).attr("name");
-            var dataString = 'id='+ id;
-            var parent = $(this);
-
-            if (name=='up'){
-                $(this).fadeIn(100).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
-                $.ajax
-                ({
-                    type: "POST",
-                    url: "upvote.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(html)
-                    {
-                        parent.html(html);
-                    } 
-                });
-            } else {
-                $(this).fadeIn(10).html('<img src="/assets/img/loading.gif" height="42" width="42"/>');
-                $.ajax
-                ({
-                    type: "POST",
-                    url: "downvote.php",
-                    data: dataString,
-                    cache: false,
-                    success: function(html)
-                    {
-                        parent.html(html);
-                    } 
-                });
-            }
-        });
-
-        // Close button action
-        $(".close").click(function()
-        {
-            $("#votebox").slideUp("slow");
-        });
-    });
-</script>
 <?php include("assets/templates/header.php"); ?>
 <?php
 function process_date($raw_date) {
@@ -96,32 +50,18 @@ function process_date($raw_date) {
 ?>
 <?php          
     /*connect to database */
-    $user_name = "root";
-    $pass_word = "csc309";
-    $database = "startit";
-    $server = "104.236.231.174:3306";;
-    
-    $db_handle = mysql_connect($server, $user_name, $pass_word);
-    $db_found = mysql_select_db($database, $db_handle);
+    include("sql.php");
 
-    $id = $_GET['id'];
-    $SQL = "SELECT * FROM projects WHERE pID = $id";
+    $code = $_GET['code'];
+    $SQL = "SELECT * FROM classes WHERE code= '$code'";
     $result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 
     //get project info
-    $title = $row['title'];
-    $id = $row['pID'];
+    $code = $row['code'];
     $desc = $row['description'];
     $creator = $row['creator'];
-    $liked = $row['likes'];
-    $disliked = $row['dislikes'];
-    $category = $row['category'];
-    $date = process_date($row['createdate']);
-    $percentage = round(($liked / ($liked + $disliked)) * 100);
-
-    //get tags
-    
+    $date = process_date($row['date']);
 	
 	//get creator info
 	$SQL = "SELECT * FROM users WHERE email = '$creator'";
@@ -144,10 +84,8 @@ function process_date($raw_date) {
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1><?=$title?></h1>
+                <h1><?=$code?></h1>
 
-                <!-- Category -->
-                <h4><?=$category?></h4>
 
                 <!-- Author -->
                 <p class="lead">
@@ -159,25 +97,10 @@ function process_date($raw_date) {
                 <!-- Date/Time -->
                 <p><span class="glyphicon glyphicon-time"></span> Created on <?=$date?></p>
 
-                <!-- Tags -->
-                <p><span class="glyphicon glyphicon-tags"></span> Tags: 
-                <?php
-                    $tagitems = array();
-                    $result = mysql_query("SELECT * FROM tags WHERE pID=$id");
-                    while($row2 = mysql_fetch_array($result, MYSQL_ASSOC)){
-                        $tag = $row2['tag'];
-                            if (!(in_array($tag, $tagitems))) {
-                            $tagitems[] = $tag;
-                        ?>
-                        <a href="browse.php?tag=<?=$tag?>"><?=$tag?></a>
-                        <?php
-                        }
-                    } ?>
-                </p>
                 <hr>
 
                 <!-- Post Content -->
-                <h4> Idea Description </h4>
+                <h4> Class Description </h4>
                 <p class="lead"><?=$desc?></p>
 
                 <hr>
@@ -195,15 +118,15 @@ function process_date($raw_date) {
                 <!-- Edit and Delete idea buttons -->
                 <?php 
                 $currentemail = $_SESSION['email'];
-                $creator = "'".$creator."'";
+                //$creator = "'".$creator."'";
                 if (strcmp($currentemail, $creator) == 0){
                     ?>
-
                     <!-- Side Widget Well -->
                     <div class="well">
                         <div class="text-center">
-                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="delete.php?id=<?=$id?>">Delete!</a>
-                        <a class="btn btn-success" href="edit.php?id=<?=$id?>">Edit!</a>
+                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="#">Delete Class!</a>
+                        <a class="btn btn-success" href="#">Edit Class!</a>
+                        <a class="btn btn-primary" href="#>">New Lecture!</a>
                         </div>
                     </div>
                     <?php
@@ -211,32 +134,26 @@ function process_date($raw_date) {
                 ?>
                 <!-- Funding Info Well -->
                 <div class="well">
-                    <h4>Likes</h4>
+                    <h4>Lectures</h4>
                     <!--Likes -->
                     <div class="row">
-                        <div class="col-sm-6 col-lg-6">
-                            <p>
-                                <div class='up'>
-                                <a href="" class="like" name="up" id="<?php echo $id; ?>"><span class="glyphicon glyphicon-thumbs-up"></span> <?php echo $liked; ?> liked!</a>
-                                </div>
-                            </p>
-                        </div>
-                        <div class="col-sm-6 col-lg-6">
-                            <p>
-                                <div class='down'>
-                                <a href="" class="like" name="down" id="<?php echo $id; ?>"><span class="glyphicon glyphicon-thumbs-down"></span> <?php echo $disliked; ?> disliked!</a>
-                                </div>
-                            </p>
-                        </div>
+                    <?php
+                        $SQL2 = "SELECT * FROM lectures WHERE class = '$code'";
+                        $result2 = mysql_query($SQL2);
+                        
+                        while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
+                            $title = "Lecture " . $row2['number'];
+                            $id = $row2['id'];
+                            ?>
+                            <div class="col-sm-6 col-lg-6">
+                                <p><a href="#"><?=$title?></a></p>
+                            </div>
+                        <?php 
+                        }
+                    ?>
                     </div>
 
-                    <!-- Progress bar -->
-                    <div class="progress">
-                         <div class="progress-bar" role="progressbar" aria-valuenow=<?=$percentage?>
-                            aria-valuemin="0" aria-valuemax="100"  style='min-width: 2em; width:<?=$percentage?>%'>
-                            <?=$percentage?>% like this idea!
-                        </div>
-                    </div>
+                    
                 </div>
 
                 
