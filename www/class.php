@@ -162,5 +162,7 @@ function process_date($raw_date) {
         </div>
         <!-- /.row -->
     </div>
-
+<br>
+<br>
+<br>
 <?php include("assets/templates/footer.php"); ?>
