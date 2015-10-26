@@ -126,7 +126,7 @@ function process_date($raw_date) {
                         <div class="text-center">
                         <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="#">Delete Class!</a>
                         <a class="btn btn-success" href="#">Edit Class!</a>
-                        <a class="btn btn-primary" href="#>">New Lecture!</a>
+                        <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture!</a>
                         </div>
                     </div>
                     <?php
@@ -142,7 +142,7 @@ function process_date($raw_date) {
                         $result2 = mysql_query($SQL2);
                         
                         while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
-                            $title = "Lecture " . $row2['number'];
+                            $title = "Lecture " . $row2['num'];
                             $id = $row2['id'];
                             ?>
                             <div class="col-sm-6 col-lg-6">
