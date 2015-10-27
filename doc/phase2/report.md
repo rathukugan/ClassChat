@@ -46,15 +46,16 @@ Chosen user stories, centered around basic question/answer and anonymity.
 
 **Phase 2 Sprint Backlog**
 
-Front-end:
+Front-end: (Al, Tommy, Kevin)
 * Overall design decision (S)
+ * Each of these three will make designs for front-end and then put them all together.
 * Login page (S) 
 * Lecture session selection view (S)
 * Answering/Asking questions view (M)
 * Differentiate the views between student and prof (M)
 
-Back-end:
-* Simple sign up/login system (S)
+Back-end: (Denis, Sarkhan, Rath)
+* Simple sign up/login system (S) - Denis
 * Student prof asking/answering question
 * Keeping logs of questions per lecture
 * Prof will be able to “create lecture sessions”
@@ -63,7 +64,7 @@ Back-end:
 * Question/Answer text areas
 
 Both:
-* Front-end/Back-end leaders final merge between front-end and back-end.
+* Front-end/Back-end leaders final merge between front-end and back-end. - Denis and Al
 
 ##Update Meetings
 
