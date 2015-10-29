@@ -4,7 +4,7 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-					<h1>Welcome to Fake Piazza!</h1>
+					<h1>Welcome to PLACEHOLDER!</h1>
 					<h4>A simple place for teachers and students to connect, <font color="red">live.</font></h5>			
 				</div>
                 

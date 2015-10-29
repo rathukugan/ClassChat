@@ -19,7 +19,7 @@ function echoActiveClassIfRequestMatches($requestUri)
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>Fake Piazza</title>
+    <title>PLACEHOLDER</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -70,7 +70,7 @@ function echoActiveClassIfRequestMatches($requestUri)
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Fake Piazza</a>
+          <a class="navbar-brand" href="index.php">PLACEHOLDER</a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
