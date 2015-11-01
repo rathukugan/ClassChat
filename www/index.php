@@ -26,7 +26,7 @@
                         	<p><br/><a href="room.php" class="btn btn-theme">Join a class!</a></p>
 	                    </div>
 	                    <div class="col-lg-6">
-	                        <p><br/><a href="browse.php" class="btn btn-theme">View Classes</a></p>
+	                        <p><br/><a href="profile.php" class="btn btn-theme">View Classes</a></p>
 	                    </div>
 	                    <?
                     }

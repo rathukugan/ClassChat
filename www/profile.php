@@ -64,9 +64,14 @@ function process_date($raw_date) {
 	$email = $row['email'];
 	$user_id = $row['userid'];
 	
-	//Find projects initiated by the current user.
-	$SQL2 = "SELECT * FROM classes WHERE creator = '$email'";
-    $result2 = mysql_query($SQL2);
+	if ($_SESSION['type'] == "Student") {
+		$SQL2 = "SELECT * FROM students WHERE email = '$email'";
+	}
+	else {
+		$SQL2 = "SELECT * FROM classes WHERE creator = '$email'";
+	}
+
+	$result2 = mysql_query($SQL2);
 ?>
     <section id="profile">
         <div class="container">
@@ -80,7 +85,7 @@ function process_date($raw_date) {
 					<?php
 						while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
 							$code = $row2['code'];
-							$id = $row2['id'];
+							//$id = $row2['id'];
 							?>
 						
 							<p><a href="class.php?code=<?=$code?>"><?=$code?></a></p>
