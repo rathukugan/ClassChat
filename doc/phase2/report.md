@@ -134,7 +134,7 @@ Final thoughts:
 
 ##Burndown Chart
 
-![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase2/report.md "Team Burndown")
+![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase2/Burndown%20Chart.PNG "Team Burndown")
 
 ##Review & Retrospective
 
