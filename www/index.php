@@ -4,7 +4,7 @@
 	    <div class="container">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-					<h1>Welcome to PLACEHOLDER!</h1>
+					<h1>Welcome to ClassChat!</h1>
 					<h4>A simple place for teachers and students to connect, <font color="red">live.</font></h5>			
 				</div>
                 
@@ -19,8 +19,8 @@
 	                    <div class="col-lg-6">
 	                        <p><br/><a href="#" class="btn btn-theme">New Lecture Session</a></p>
 	                    </div>
-	                    <?
-                    } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){
+	                    <?php
+                    } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){ 
                         ?>
                     	<div class="col-lg-6">
                         	<p><br/><a href="room.php" class="btn btn-theme">Join a class!</a></p>
@@ -28,7 +28,7 @@
 	                    <div class="col-lg-6">
 	                        <p><br/><a href="profile.php" class="btn btn-theme">View Classes</a></p>
 	                    </div>
-	                    <?
+	                    <?php
                     }
                     else {
                         $create_permission = "login.php?r=1";
@@ -75,4 +75,3 @@
 	 </div><!--/service -->
 	
 <?php include("assets/templates/footer.php"); ?>
-	

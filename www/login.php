@@ -114,4 +114,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       </div>
   </div>
 
-<?php include("assets/templates/footer.html"); ?>
+<?php include("assets/templates/footer.php"); ?>
