@@ -44,6 +44,23 @@
         </div>
     </div>
 
+    <?php if($_SESSION['type'] == "Student") : ?>
+        <div class="container well" style="margin-top:50px">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="well">
+                            <div class="form-group">
+                                <input  class="form-control" type="text" name="question" placeholder="Ask a Question!" class="inputs" required><br>
+                                <span class="help-block"></span>
+                            </div>
+                            <button type="submit" class="btn btn-theme btn-block">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    <?php endif; ?>
+
     <div class="container well" style="margin-top:130px">
         <div class="row">
             <h2 class="title text-center"> Questions</h2>
