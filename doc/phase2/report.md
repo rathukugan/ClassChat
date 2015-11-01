@@ -41,8 +41,7 @@ Features:
 Chosen user stories, centered around basic question/answer and anonymity.
 
 1. As an average computer science student who struggles with public speaking, I want to be able to ask questions so that I can get the most out of my university education.
-2. As a clueless, extroverted student I want to ask a low - level question while being anonymous so that I can catch up to the material without the implicit shame of stupidity.
-3. As an instructor I want to encourage all members of the class to have an equal opportunity to ask questions so that each student feels like they understand the material.
+2. As an instructor I want to encourage all members of the class to have an equal opportunity to ask questions so that each student feels like they understand the material.
 
 **Phase 2 Sprint Backlog**
 
@@ -67,6 +66,54 @@ Both:
 * Front-end/Back-end leaders final merge between front-end and back-end. - Denis and Al
 
 ##Update Meetings
+
+**Update Meeting #1**
+* Time: Tuesday Oct 27 at 10pm
+* Location: Online meeting on Slack
+* Participants: Front-End team - Al, Kevin, Tommy
+
+Subject: Design decisions for front end
+- Went over some general sketches of what each view would look like.
+- Need some more time to sketch out details like placement of buttons and text boxes.
+- Kevin suggests the front-end team should meet on monday to iron out details and code together.
+- Change sprint backlog design task, to just be a rough sketch, the finalized design will be done on sunday while coding with the team.
+
+**Update Meeting #2**
+* Time: Thursday Oct 29 at 8pm
+* Location: Online meeting on Slack.
+* Participants: Entire group.
+
+Subject: Narrow down user group after meeting with TA.
+- We need to distinguish between a regular q/a system and our live in lecture experience.
+- Remove task from sprint backlog for students to view past logs of questions. This is not good for a product focused on the live lecture experience.
+- Focus more on the in lecture live questions aspect to increase interactivity.
+- Potential tasks to add to sprint backlog for later phases: Add in office hours? After the live lecture session is over so the student can know when to ask the prof their question.
+- Narrow down on the user group: confused but shy student in lecture.
+- Another potential task to add to backlog: Confusion indicator for students to press so prof has an idea if he/she needs to spend more time explaining the concept.
+
+Final thoughts:
+- Al: reemphasized that for this phase we are coding prof/student register/login andtwo text blocks for questions and answers. The ideas we have generated for narrowing our user group are perfect for the next phase.
+- Denis: Schedule a backend meeting for friday, to split up tasks.
+
+**Update Meeting #3**
+* Time: Friday Oct 30 at 5pm
+* Location: In-person at Bahen.
+* Participants: Back-end team (Denis, Sarkhan, Rath) & Kevin
+
+Subject: Split up tasks and subdivide back-end sprint backlog.
+- Denis has set up the boiler plate for backend including login/registration, new lecture sessions.
+- now must do the question answer part and live updating questions.
+- rath will handle setting up student views, joining by room code
+- sarkhan will handle question answer, using ajax and PHP
+- Changes to sprint backlog: 
+   * Sub divide setting up student views to task room code, task students can view lectures, task setup text boxes.
+   * Split question/answer task to the first task of live updating questions. Then handle the task for student asking a question to the prof.
+   
+Final thoughts:
+- Rath will work on setting up student stuff on saturday
+- Sarkhan will work on question/answer after that.
+- Denis will be available to answer any dev questions.
+
 
 ##Burndown Chart
 
