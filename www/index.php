@@ -23,7 +23,7 @@
                     } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){
                         ?>
                     	<div class="col-lg-6">
-                        	<p><br/><a href="#" class="btn btn-theme">Join a class!</a></p>
+                        	<p><br/><a href="room.php" class="btn btn-theme">Join a class!</a></p>
 	                    </div>
 	                    <div class="col-lg-6">
 	                        <p><br/><a href="browse.php" class="btn btn-theme">View Classes</a></p>

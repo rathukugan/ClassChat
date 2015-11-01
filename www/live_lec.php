@@ -43,4 +43,13 @@
             
         </div>
     </div>
+
+    <div class="container well" style="margin-top:130px">
+        <div class="row">
+            <h2 class="title text-center"> Questions</h2>
+
+            <br>
+            
+        </div>
+    </div>
 <?php include("assets/templates/footer.php"); ?>
