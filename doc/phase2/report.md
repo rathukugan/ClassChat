@@ -118,3 +118,14 @@ Final thoughts:
 ##Burndown Chart
 
 ##Review & Retrospective
+
+In our first group meeting, we discussed all the possible ideas to incorporate into our Phase 2. To facilitate the speed of our progress, we decided to relax our limitations in terms of our plan. In other words, we want to decide what is the maximum amount of work we would be able to accomplish before the deadline. After we have come up with a plan, we would then trim it down through a series of analysis and extrapolations. Initially, our plan was quite large. It included finishing many functions within the front-end and the back-end. This includes setting up the database and the back-end connection, login and sign up system, keeping and retrieving logs of questions in the database, and many more. Obviously, this was too much. Consequently, we decided to cut down some tasks including sessions for specific users, ability for professors to kick out users from current lecture sections, and many more detailed functions that we deemed not suitable for this phase. The main reason these functions did not the make the cut is because we decided they are too detailed. We would like to focus entirely on the back-bone of the web app before moving on to little details. Thus, a good fundamental start would result in a more successful prouct.
+
+Tasks that were split before being completed include the entire front-end and back-end. In the beginning, we split up the work by specific functions of the web app. However, it proved to be inadequate as complications and disorganization arose. It was hard to remember who is working on what. Thus, we decided to group people up by front-end and back-end. From there, the group would appoint a sub Scrum leader that deals with the overall function of the group. Additionally, the two sub Scrum leaders would frequently communicate in order to effectively merge the front and back-end.
+
+
+
+Provide thoughtful, retrospective reflection on your process
+Identify decisions that worked well
+Identify decisions that didn’t work well
+Suggest concrete improvements
