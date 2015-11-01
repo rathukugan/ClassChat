@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.10
+-- version 4.4.10
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Oct 30, 2015 at 10:06 PM
--- Server version: 5.5.38
--- PHP Version: 5.6.2
+-- Generation Time: Nov 01, 2015 at 01:19 AM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `classes` (
   `creator` varchar(50) NOT NULL,
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `code` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL,
   `invite` varchar(13) NOT NULL,
@@ -46,7 +46,7 @@ INSERT INTO `classes` (`creator`, `id`, `code`, `description`, `invite`, `date`)
 --
 
 CREATE TABLE `lectures` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `class` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `num` int(11) NOT NULL,
@@ -74,7 +74,7 @@ INSERT INTO `lectures` (`id`, `class`, `date`, `num`, `topic`) VALUES
 --
 
 CREATE TABLE `questions` (
-`id` int(20) NOT NULL,
+  `id` int(20) NOT NULL,
   `question` varchar(50) NOT NULL,
   `answer` varchar(50) DEFAULT NULL,
   `creator` varchar(50) NOT NULL,
@@ -84,16 +84,28 @@ CREATE TABLE `questions` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `row_id` int(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `code` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-`userid` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -103,7 +115,8 @@ INSERT INTO `users` (`userid`, `name`, `email`, `password`, `type`) VALUES
 (10, 'Denis', 'dmarch1993@gmail.com', '12345', 'Student'),
 (11, 'Kevin Color', 'kevincolor@gmail.com', '12345', 'Professor'),
 (12, 'Bob', 'bob@utoronto.ca', '12345', 'Professor'),
-(13, 'tom', 'tomorrow@mail.com', '12345', 'Professor');
+(13, 'tom', 'tomorrow@mail.com', '12345', 'Professor'),
+(14, 'rath', 'test@mail.com', '123', 'Student');
 
 --
 -- Indexes for dumped tables
@@ -113,25 +126,35 @@ INSERT INTO `users` (`userid`, `name`, `email`, `password`, `type`) VALUES
 -- Indexes for table `classes`
 --
 ALTER TABLE `classes`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`), ADD UNIQUE KEY `name` (`code`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `name` (`code`);
 
 --
 -- Indexes for table `lectures`
 --
 ALTER TABLE `lectures`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
- ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`row_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`userid`), ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`userid`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -141,19 +164,24 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `lectures`
 --
 ALTER TABLE `lectures`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `row_id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
