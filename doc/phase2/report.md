@@ -63,7 +63,7 @@ Back-end: (Denis, Sarkhan, Rath)
  * [Setup a question text box for student. (S)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/20)
 * Question/Answer - revised from update meeting 3 to subdivide into 2 tasks
  * [Live updating questions (M)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/21)
- * [Student asking a question to the prof and connect that with the live updating questions. (S)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/22)
+ * [~~Student asking a question to the prof and connect that with the live updating questions. (S)~~ (Moved to phase 3 as we couldnt get it done.)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/22)
 * [~~Displaying logs of questions per lecture~~](https://github.com/csc301-fall-2015/project-team8-L5101/issues/24)
  * Removed after update meeting 2
  
