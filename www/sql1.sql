@@ -79,6 +79,7 @@ CREATE TABLE `questions` (
   `answer` varchar(50) DEFAULT NULL,
   `creator` varchar(50) NOT NULL,
   `lecture` int(20) NOT NULL
+  `postTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
