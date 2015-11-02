@@ -136,6 +136,9 @@ Final thoughts:
 
 ![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase2/Burndown%20Chart.PNG "Team Burndown")
 
+![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase2/Individual%20Burndown%20Chart.PNG "Individual Burndown")
+
+
 ##Review & Retrospective
 
 1.a) In our first group meeting, we discussed all the possible ideas to incorporate into our Phase 2. To facilitate the speed of our progress, we decided to relax our limitations in terms of our plan. In other words, we want to decide what is the maximum amount of work we would be able to accomplish before the deadline. After we have come up with a plan, we would then trim it down through a series of analysis and extrapolations. Initially, our plan was quite large. It included finishing many functions within the front-end and the back-end. This includes setting up the database and the back-end connection, login and sign up system, keeping and retrieving logs of questions in the database, and many more. Obviously, this was too much. Consequently, we decided to cut down some tasks including sessions for specific users, ability for professors to kick out users from current lecture sections, and many more detailed functions that we deemed not suitable for this phase. The main reason these functions did not the make the cut is because we decided they are too detailed. We would like to focus entirely on the back-bone of the web app before moving on to little details. Thus, a good fundamental start would result in a more successful product.
