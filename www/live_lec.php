@@ -28,9 +28,10 @@
     $name = $row3['name'];
 
     /* =============== TODO: make live questions popup and store them in questions database ======= */
-
 ?>
+
 <?php include("assets/templates/header.php"); ?>
+    
     <div class="container well" style="margin-top:130px">
         <div class="row">
             <h2 class="title text-center"> Live Lecture</h2>
@@ -64,9 +65,17 @@
     <div class="container well" style="margin-top:130px">
         <div class="row">
             <h2 class="title text-center"> Questions</h2>
-
             <br>
+            <?php 
+            //$timestamp = $_REQUEST['timestamp'];
+            $find_questions = "SELECT id, question, answer, creator, lecture FROM questions WHERE lecture = '$lec_id'";
+            $nextresult = mysql_query($find_questions);
+            while($row4 = mysql_fetch_row($nextresult, MYSQL_ASSOC)) {
+                echo("<p> '$row4[question]' '$row4[answer]' </p>");
+            }
             
+            ?>
         </div>
     </div>
+
 <?php include("assets/templates/footer.php"); ?>
