@@ -19,7 +19,7 @@ function echoActiveClassIfRequestMatches($requestUri)
     <meta name="author" content="">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
 
-    <title>PLACEHOLDER</title>
+    <title>ClassChat</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -59,7 +59,7 @@ function echoActiveClassIfRequestMatches($requestUri)
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">PLACEHOLDER</a>
+          <a class="navbar-brand" href="index.php">ClassChat</a>
         </div>
         <div class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
@@ -73,7 +73,7 @@ function echoActiveClassIfRequestMatches($requestUri)
               //Student nav buttons
               } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){
                   echo '<li class="nav-item"><a href="#">WELCOME STUDENT</a></li>';
-                  echo '<li class="nav-item"><a href="#">MY CLASSES</a></li>';
+                  echo '<li class="nav-item"><a href="profile.php">MY CLASSES</a></li>';
                   echo '<li class="nav-item"><a href="logout.php">LOGOUT</a></li>';
               } //Not logged in.
               else{

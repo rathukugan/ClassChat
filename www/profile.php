@@ -79,27 +79,23 @@ function process_date($raw_date) {
             <br>
             <br>
             <div class= 'text-center'>
-	            <h2 class="title text-center profile_headings">Welcome <?=$name?>!</h2>
+	            <h2 class="title text-center profile_headings">Welcome <?=$name?>, your classes:</h2>
 				<div id="profile_projects">
-					<h2 class="profile_headings">My Classes</h2>
+					<table class="table table-striped" style="width: 500px;
+					margin-left:auto; margin-right:auto">
 					<?php
 						while($row2 = mysql_fetch_array($result2, MYSQL_ASSOC)){
 							$code = $row2['code'];
 							//$id = $row2['id'];
 							?>
 						
-							<p><a href="class.php?code=<?=$code?>"><?=$code?></a></p>
+							<tr><td><a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
 						if (!isset($code)){
 							?>
-							<p> You have not made any classes yet!</p>
-							<p> <a href="create.php">Create</a> a class now! </p>
-							<br>
-							<br>
-							<br>
-							<br>
-							<br>
+							<tr> <td><p>You have not made any classes yet!</p>
+							<p> <a href="create.php">Create</a> a class now! </p></td></tr>
 							<br>
 							<br>
 							<br>
@@ -108,7 +104,9 @@ function process_date($raw_date) {
 							<br>
 							<?php
 						}
-					?>		 
+					?>
+					</table>
+					<a href="room.php">Join other classes!</a>
 				</div>
 			</div>
         </div>

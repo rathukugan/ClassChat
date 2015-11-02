@@ -26,7 +26,7 @@
                 $result2 = mysql_query($SQL2);
                 mysql_close($db_handle);
 
-                header ("Location: index.php");
+                header ("Location: profile.php");
             }
             else {
                 $errorMessage = "Invalid room code!";
@@ -36,33 +36,23 @@
 ?>
 
 <?php include("assets/templates/header.php"); ?>
-<div id="login-overlay" class="modal-dialog" style="margin-top:100px">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Enter a room code</h4>
-          </div>
-          <div class="modal-body">
-              <div class="row">
-                  <div class="col-xs-12">
-                      <div class="well">
-                            <h3 class="title text-center"><?PHP print $errorMessage;?> </h3>
-                            <?php //redirect from create
-                            if (isset($_GET['r'])){
-                              echo '<form action="room.php?r=1" method="post" class="intro text-center">';
-                            } else {
-                              echo '<form action="room.php" method="post" class="intro text-center">';
-                            }
-                            ?>
-                              <div class="form-group">
-                                  <input  class="form-control" type="text" name="room" placeholder="Room Code" class="inputs" required><br>
-                                  <span class="help-block"></span>
-                              </div>
-                              <button type="submit" class="btn btn-theme btn-block">Submit</button>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+<div class="row">
+  <div class="col-md-offset-4 col-md-4" style="margin-top:50px; padding-top:100px">
+  <h1>Enter room code:</h1>
+    <h3 class="title text-center"><?php print $errorMessage;?> </h3>
+      <?php //redirect from create
+      if (isset($_GET['r'])){
+        echo '<form action="room.php?r=1" method="post" class="intro text-center">';
+      } else {
+        echo '<form action="room.php" method="post" class="intro text-center">';
+      }
+      ?>
+        <div class="form-group">
+            <input style="width:300px;"  class="form-control" type="text" name="room" placeholder="Room Code" class="inputs" required><br>
+            <span class="help-block"></span>
+        </div>
+        <button style="width:300px;" type="submit" class="btn btn-theme btn-block">Join</button>
+    </form>
   </div>
+</div>
 <?php include("assets/templates/footer.php"); ?>
