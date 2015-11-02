@@ -20,6 +20,9 @@
 		margin: 0;
 		padding: 0px;
 	} 
+html{
+	height: 100%;
+}
 
 body { 
 	background: #ffffff; 
@@ -210,6 +213,7 @@ a:focus {
 	padding-top: 70px;
 	padding-bottom: 0px;
 	text-align: center;
+	background: url("../../assets/img/lecturehall.jpg") center;
 }
 
 #headerwrap h3, h5 {
@@ -219,11 +223,19 @@ a:focus {
 
 #headerwrap h1 {
 	color: white;
+	text-shadow: -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 	margin-bottom: 15px;
 }
 
 #headerwrap .img-responsive {
 	margin: 0 auto;
+}
+
+#headerwrap .btn-lg{
+	margin:20px
 }
 
 /* Services Wrap */
@@ -334,9 +346,14 @@ a:focus {
 
 /* Footer */
 #footerwrap {
-	padding-top: 60px;
-	padding-bottom: 60px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	background: #384452;
+	height: 100px;
+}
+
+.push{
+	height: 100px;
 }
 
 #footerwrap p {
@@ -462,3 +479,11 @@ csmall2 {
   height: 50px;
   overflow: auto;
 }
+
+.content{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -2em;
+}
+
