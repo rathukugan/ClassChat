@@ -1,32 +1,23 @@
-<?php include("assets/templates/header.php"); ?>
+	<?php include("assets/templates/header.php"); ?>
 	<!-- Main -->
 	<div id="headerwrap">
 	    <div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2">
-					<h1>Welcome to ClassChat!</h1>
-					<h4>A simple place for teachers and students to connect, <font color="red">live.</font></h5>			
-				</div>
-                
+			<div class="row">                
                 <div class="row">
 
                     <?php 
                     if (isset($_SESSION['login']) AND $_SESSION['type'] == "Professor"){
                     	?>
-                    	<div class="col-lg-6">
-                        	<p><br/><a href="create.php" class="btn btn-theme">New Class</a></p>
-	                    </div>
-	                    <div class="col-lg-6">
-	                        <p><br/><a href="#" class="btn btn-theme">New Lecture Session</a></p>
+                    	<div class="col-sm-12">
+                        	<br/><br/><br/><a href="create.php" class="btn btn-theme btn-lg">New Class</a>
+	                    	<a href="#" class="btn btn-theme btn-lg">New Lecture Session</a>
 	                    </div>
 	                    <?php
                     } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){ 
                         ?>
-                    	<div class="col-lg-6">
-                        	<p><br/><a href="room.php" class="btn btn-theme">Join a class!</a></p>
-	                    </div>
-	                    <div class="col-lg-6">
-	                        <p><br/><a href="profile.php" class="btn btn-theme">View Classes</a></p>
+                    	<div class="col-sm-12">
+                        	<br/><br/><br/><a href="room.php" class="btn btn-theme btn-lg">Join a class</a>
+	                   		 <a href="profile.php" class="btn btn-theme btn-lg">View Classes</a>
 	                    </div>
 	                    <?php
                     }
@@ -62,10 +53,10 @@
 	 		</div>
 	 		<div class="row centered">
 	 			<div class="col-md-4">
-	 				<p><a href="#" class="btn btn-theme">Ask a question!</a></p>
+	 				<p><a href="profile.php" class="btn btn-theme">Ask a question!</a></p>
 	 			</div>
 	 			<div class="col-md-4">
- 					<p><a href="#" class="btn btn-theme">Join a class!</a></p>
+ 					<p><a href="room.php" class="btn btn-theme">Join a class!</a></p>
 	 			</div>
 	 			<div class="col-md-4">
  					<p><a href="#" class="btn btn-theme">Start a class!</a></p>

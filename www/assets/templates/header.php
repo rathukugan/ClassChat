@@ -73,7 +73,7 @@ function echoActiveClassIfRequestMatches($requestUri)
               //Student nav buttons
               } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){
                   echo '<li class="nav-item"><a href="#">WELCOME STUDENT</a></li>';
-                  echo '<li class="nav-item"><a href="#">MY CLASSES</a></li>';
+                  echo '<li class="nav-item"><a href="profile.php">MY CLASSES</a></li>';
                   echo '<li class="nav-item"><a href="logout.php">LOGOUT</a></li>';
               } //Not logged in.
               else{

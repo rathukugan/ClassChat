@@ -81,38 +81,119 @@
         }, 2000);
     </script>
     <div class="container well" style="margin-top:130px">
+
         <div class="row">
-            <h2 class="title text-center"> Live Lecture</h2>
-            <h4 class="title text-center">Lecture id: <?=$lec_id?> </h4>
-            <h4 class="title text-center">Lecture topic: <?=$topic?> </h4>
-            <h4 class="title text-center">Course: <?=$course?> </h4>
-            <h4 class="title text-center">Professor: <?=$name?> </h4>
-
-            <br>
-            
-        </div>
-    </div>
-
-    <?php if($_SESSION['type'] == "Student") : ?>
-        <div class="container well" style="margin-top:50px">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="well">
-                            <div class="form-group">
-                                <input  class="form-control" type="text" name="question" placeholder="Ask a Question!" class="inputs" required><br>
-                                <span class="help-block"></span>
+            <h2 class="title text-center">Questions for professor <?=$name; ?></h2>
+            <?php if($_SESSION['type'] == "Student") : ?>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                    <form>
+                                    <div class="form-group" style="text-align: center">
+                                        <input style="width: 600px; padding: 5px" type="text" name="question" placeholder="Ask a Question!" class="inputs" required>
+                                        
+                                    <button type="submit" class="btn btn-theme">Send</button>
+                                    </div>
+                                    </form>
                             </div>
-                            <button type="submit" class="btn btn-theme btn-block">Submit</button>
-                            </form>
                         </div>
-                    </div>
-                </div>
-        </div>
-    <?php endif; ?>
-
-    <div class="container well" style="margin-top:130px">
-        <div class="row">
-            <h2 class="title text-center"> Questions</h2>
+            <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">
+                <tr>
+                    <td><a href="#"></a></td>
+                    <td>What is the difference between OS pages and memory?</td>
+                    <td>6:15 PM</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Me:</a></td>
+                    <td>Where is the stack pointer?</td>
+                    <td>6:13 PM</td>
+                    <td><a href="#">Resolve</a></td>
+                </tr>
+                <tr>
+                    <td><a href="#"></a></td>
+                    <td>Why Git is better than SVN?</td>
+                    <td>6:05 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#"></a></td>
+                    <td>What was the average in the course in the past years?</td>
+                    <td>5:55 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#"></a></td>
+                    <td>Do I need any prerequisites for this course?</td>
+                    <td>5:52 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#"></a></td>
+                    <td>Where can I find the piazza link?</td>
+                    <td>5:47 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#"></a></td>
+                    <td>Could you explain the purpose of the locking system again?</td>
+                    <td>5:40 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#"></a></td>
+                    <td>What is the difference between A locks and B locks?</td>
+                    <td>5:33 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#"></a></td>
+                    <td>Why the midterm was so hard?</td>
+                    <td>5:30 PM</td>
+                </tr>
+            </table>
+            <?php endif; ?>
+            <?php if($_SESSION['type'] == "Professor") : ?>
+            <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">
+                <tr>
+                    <td><a href="#">Dylan:</a></td>
+                    <td>What is the difference between OS pages and memory?</td>
+                    <td>6:15 PM</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Bob:</a></td>
+                    <td>Where is the stack pointer?</td>
+                    <td>6:13 PM</td>
+                </tr>
+                <tr>
+                    <td><a href="#">Dina:</a></td>
+                    <td>Why Git is better than SVN?</td>
+                    <td>6:05 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#">Julia:</a></td>
+                    <td>What was the average in the course in the past years?</td>
+                    <td>5:55 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#">Dylan:</a></td>
+                    <td>Do I need any prerequisites for this course?</td>
+                    <td>5:52 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#">Jon:</a></td>
+                    <td>Where can I find the piazza link?</td>
+                    <td>5:47 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#">Sarah:</a></td>
+                    <td>Could you explain the purpose of the locking system again?</td>
+                    <td>5:40 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#">Jon:</a></td>
+                    <td>What is the difference between A locks and B locks?</td>
+                    <td>5:33 PM</td>
+                </tr>
+                <tr class="success">
+                    <td><a href="#">Jon:</a></td>
+                    <td>Why the midterm was so hard?</td>
+                    <td>5:30 PM</td>
+                </tr>
+            </table>                
+            <?php endif; ?>
             <br>
             <?php 
                 //$timestamp = $_REQUEST['timestamp'];
@@ -123,6 +204,9 @@
                 }  
             ?>
         </div>
+            
     </div>
+
+    
 
 <?php include("assets/templates/footer.php"); ?>
