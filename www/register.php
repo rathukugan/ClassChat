@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = trim($_POST['email']);
     $name = trim($_POST['name']);
     $pass = trim($_POST['pass']);
-	 $pass2 = trim($_POST['pass2']);
+     $pass2 = trim($_POST['pass2']);
    $category = trim($_POST['category']);
     
     //make sure all fields are set
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = htmlspecialchars($email);
     $name = htmlspecialchars($name);
     $pass = htmlspecialchars($pass);
-	$pass2 = htmlspecialchars($pass2);
+    $pass2 = htmlspecialchars($pass2);
     $type = htmlspecialchars($category);
     /*connect to database */
     include("sql.php");
@@ -30,14 +30,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         if ($num_rows > 0) {
             $errorMessage = "Username already taken!";
         }
-		
-		else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-			$errorMessage = "Please make sure to provide a valid e-mail address!";
-		}
-		
-		else if ($pass != $pass2) {
-			$errorMessage = "Please make sure that your passwords match!";
-		}
+        
+        else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errorMessage = "Please make sure to provide a valid e-mail address!";
+        }
+        
+        else if ($pass != $pass2) {
+            $errorMessage = "Please make sure that your passwords match!";
+        }
         else {
 
             $SQL = "INSERT INTO users (email, name, password, type) VALUES ('$email', '$name', '$pass', '$type')";
@@ -122,4 +122,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
       </div>
   </div>
 
-<?php include("assets/templates/footer.php"); ?>
+<?php include("assets/templates/footer.html"); ?>
