@@ -6,7 +6,7 @@ Definition of our Scrum Master:
 * Designate roles and assign tasks to front-end, back-end teams.
 
 We will rotate scrum master every phase for those who would like to do it, for this phase our scrum master will be Rathusshan.
-Our scrum master will not designate help, because he may not have the most technical knowledge in a certain area. Instead our front-end, back-end leaders (see sprint backlog below for explanation) can inform the scrum master on how front-end/back-end tasks to be changed and what issues they are having.
+Our scrum master will not designate help, because he may not have the most technical knowledge in a certain area. Instead our front-end, back-end leaders (see sprint backlog below for explanation) can inform the scrum master on how front-end/back-end tasks need to be changed and what issues they are having.
 
 Estimating Task Size:
 
@@ -21,6 +21,12 @@ What we are building:
 a web app using HTML/CSS/Javascript (front-end), PHP, mySQL for backend.
 With our chosen user stories below, we have focused on increasing classroom interaction by allowing for anonymity and ease of use in asking questions.
 
+Chosen user stories, centered around basic question/answer, anonymity and the struggling shy student.
+
+1. As an average computer science student who struggles with public speaking, I want to be able to ask questions so that I can get the most out of my university education.
+2. As an instructor I want to encourage all members of the class to have an equal opportunity to ask questions so that each student feels like they understand the material.
+
+
 Potential Features for end goal:
 * Mobile compatible
 * Signup/Login system with room code.
@@ -29,13 +35,9 @@ Potential Features for end goal:
 * Rating system for all student questions, that students can upvote/downvote.
 * A split-view for students to see student questions and to ask/answer prof question.
 * Anonymity - Students see other students as anonymous, professor can still see student names/email's.
-* Log of questions is kept after each lecture session.
 * Professor can record response to the question while its being said, and stored in lecture session database (mp3 file).
-
-Chosen user stories, centered around basic question/answer and anonymity.
-
-1. As an average computer science student who struggles with public speaking, I want to be able to ask questions so that I can get the most out of my university education.
-2. As an instructor I want to encourage all members of the class to have an equal opportunity to ask questions so that each student feels like they understand the material.
+* Office hours support
+* Confusion indicator during lecture
 
 **How we plan to build it**
 
@@ -61,7 +63,7 @@ Back-end: (Denis, Sarkhan, Rath)
  * [Setup a question text box for student. (S)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/20)
 * Question/Answer - revised from update meeting 3 to subdivide into 2 tasks
  * [Live updating questions (M)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/21)
- * [Student asking a question to the prof and connect that with the live updating questions. (S)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/22)
+ * [~~Student asking a question to the prof and connect that with the live updating questions. (S)~~ (Moved to phase 3 as we couldnt get it done.)](https://github.com/csc301-fall-2015/project-team8-L5101/issues/22)
 * [~~Displaying logs of questions per lecture~~](https://github.com/csc301-fall-2015/project-team8-L5101/issues/24)
  * Removed after update meeting 2
  
@@ -92,7 +94,7 @@ Potential tasks for next phase (as discussed after update meeting 2)
 Subject: Design decisions for front end
 - Went over some general sketches of what each view would look like.
 - Need some more time to sketch out details like placement of buttons and text boxes.
-- Kevin suggests the front-end team should meet on monday to iron out details and code together.
+- Kevin suggests the front-end team should meet on sunday to iron out details and code together.
 - Change sprint backlog design task, to just be a rough sketch, the finalized design will be done on sunday while coding with the team.
 
 **Update Meeting #2**
