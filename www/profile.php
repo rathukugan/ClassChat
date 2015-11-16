@@ -92,7 +92,7 @@ function process_date($raw_date) {
 							<tr><td><a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
-						if (!isset($code)){
+						if (!isset($code) && ($_SESSION['type'] == "Professor")){
 							?>
 							<tr> <td><p>You have not made any classes yet!</p>
 							<p> <a href="create.php">Create</a> a class now! </p></td></tr>
