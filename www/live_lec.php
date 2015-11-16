@@ -67,7 +67,7 @@
                 data: {'action': 'getNewQuestions', 'id': <?=$lec_id?>, 'time': time},
                 success: function(data, status) {
                     if(data) {
-                        $(".row").append("<p>" + data + </p>);
+                        $(".row").append("<p>" + data + "</p>");
                     }
                     else {
                         console.log("no data recieved");
