@@ -50,22 +50,23 @@ CREATE TABLE `lectures` (
   `class` varchar(50) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `num` int(11) NOT NULL,
-  `topic` varchar(50) NOT NULL
+  `topic` varchar(50) NOT NULL,
+  `flag` varchar(50) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lectures`
 --
 
-INSERT INTO `lectures` (`id`, `class`, `date`, `num`, `topic`) VALUES
-(1, 'csc301', '2015-10-26 20:39:09', 1, 'swagging'),
-(2, 'csc301', '2015-10-26 20:41:54', 2, 'learning to github'),
-(3, 'csc302', '2015-10-26 20:42:04', 1, 'how to java'),
-(4, 'csc301', '2015-10-26 20:47:15', 3, 'learning github'),
-(5, 'csc301', '2015-10-26 20:56:02', 4, 'learning balls'),
-(6, 'csc301', '2015-10-26 20:57:56', 5, 'learning balls 2'),
-(7, 'csc309', '2015-10-30 21:01:31', 1, 'github'),
-(8, 'csc309', '2015-10-30 21:02:48', 2, 'lol');
+INSERT INTO `lectures` (`id`, `class`, `date`, `num`, `topic`, `flag`) VALUES
+(1, 'csc301', '2015-10-26 20:39:09', 1, 'swagging', 'ended'),
+(2, 'csc301', '2015-10-26 20:41:54', 2, 'learning to github', 'ended' ),
+(3, 'csc302', '2015-10-26 20:42:04', 1, 'how to java', 'ended'),
+(4, 'csc301', '2015-10-26 20:47:15', 3, 'learning github', 'ended'),
+(5, 'csc301', '2015-10-26 20:56:02', 4, 'learning balls', 'ended'),
+(6, 'csc301', '2015-10-26 20:57:56', 5, 'learning balls 2', 'ended'),
+(7, 'csc309', '2015-10-30 21:01:31', 1, 'github', 'ended'),
+(8, 'csc309', '2015-10-30 21:02:48', 2, 'lol', 'ended');
 
 -- --------------------------------------------------------
 
