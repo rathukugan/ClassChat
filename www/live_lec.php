@@ -55,6 +55,8 @@ function post()
   return false;
 }
 </script>
+
+
 <?php include("assets/templates/header.php"); ?>
 <div class="container well" style="margin-top:130px">
 
@@ -73,15 +75,16 @@ function post()
                         </div>
                     </div>
                     <div id="all_comments">
-                    <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">
+                    <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">    
+                    
                     <?php
                   
-                    $comm = mysql_query("SELECT question, creator, postTime from questions where lecture='$lec_id' order by postTime desc");
+                    $comm = mysql_query("SELECT id, question, creator, postTime from questions where lecture='$lec_id' order by postTime desc");
                     while($row=mysql_fetch_array($comm))
                     {
                       $name=$row['creator'];
                       $question=$row['question'];
-                      $time=$row['postTime'];
+                      $time=$row['postTime'];           
                     ?>
                     
                     <tr>
@@ -93,6 +96,7 @@ function post()
                   
                     <?php
                     }
+
                     ?>
                     </table>
                   </div>
@@ -103,6 +107,18 @@ function post()
         
 </div>
 
-    
+<script type="text/javascript">
+window.setInterval(function() {
+    // Every 5 seconds send an AJAX request and update the price
+    $.ajax({
+        url: 'check.php',
+        type: 'post',
+        data:{'id': <?=$lec_id?>},        
+        success: function (result) {
+            document.getElementById("all_comments").innerHTML=result;
+        }
+    });
+}, 5000); 
+</script>
 
 <?php include("assets/templates/footer.php"); ?>
