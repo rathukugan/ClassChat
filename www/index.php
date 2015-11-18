@@ -11,21 +11,21 @@
                         ?>
                         <div class="col-sm-12">
                             <br/><br/><br/><a href="create.php" class="btn btn-theme btn-lg">New Class</a>
-                            <a href="#" class="btn btn-theme btn-lg">New Lecture Session</a>
+                            <a href="profile.php" class="btn btn-theme btn-lg">New Lecture Session</a>
                         </div>
-                        <?
+                        <?php
                     } elseif (isset($_SESSION['login']) AND $_SESSION['type'] == "Student"){
                         ?>
                         <div class="col-sm-12">
                             <br/><br/><br/><a href="room.php" class="btn btn-theme btn-lg">Join a class</a>
                              <a href="profile.php" class="btn btn-theme btn-lg">View Classes</a>
                         </div>
-                        <?
+                        <?php
                     }
                     else {
                         $create_permission = "login.php?r=1";
                     }
-                ?>
+                    ?>
                 </div>
             </div><!-- /row -->
         </div> <!-- /container -->
@@ -66,5 +66,4 @@
         </div><!--/container -->
      </div><!--/service -->
     
-<?php include("assets/templates/footer.php"); ?>
-    
+    <?php include("assets/templates/footer.php"); ?>
