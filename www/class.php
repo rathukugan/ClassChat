@@ -104,6 +104,11 @@ function process_date($raw_date) {
                 <p class="lead"><?=$desc?></p>
 
                 <hr>
+
+                <h4> View Questions </h4>
+                <a class="btn btn-theme" href="questions.php?course=<?=$code?>">View Questions</a>
+
+                <hr>
                 <br>
                 <br>
                 <br>
