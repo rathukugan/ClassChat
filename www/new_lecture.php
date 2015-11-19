@@ -13,6 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $topic = trim($_POST['topic']);
     $email = trim($_SESSION['email']);
     $course = $_GET['course'];
+    /* Lecture session becomes 'ongoing' the moment professor creates one */
+    $flag = "ongoing";
            
     /* strip of any sketchy characters */
     $topic = htmlspecialchars($topic);
@@ -35,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             $count_lecturenum = "SELECT count(id) FROM lectures WHERE class = '$course'";        
             $row = mysql_fetch_array(mysql_query($count_lecturenum), MYSQL_ASSOC);
             $num = $row['count(id)'] + 1;
-            $SQL = "INSERT INTO lectures (class, topic, num) VALUES ('$course', '$topic', '$num')";
+            $SQL = "INSERT INTO lectures (class, topic, num, flag) VALUES ('$course', '$topic', '$num', '$flag')";
             
             //execute
             $result = mysql_query($SQL);
