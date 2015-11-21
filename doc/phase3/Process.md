@@ -33,6 +33,6 @@ Subject: Feature Removal
 - Time constraint makes us realize that the professor being able to record answers is counter-productive.
 
 
-![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase3/TeamBurndown%20Chart.PNG "Team Burndown")
+![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase3/TeamBurndown.PNG "Team Burndown")
 
-![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase3/Individual%20Burndown%20Chart.PNG "Individual Burndown")
+![Alt text](https://github.com/csc301-fall-2015/project-team8-L5101/blob/master/doc/phase3/Individual%20Burndown.PNG "Individual Burndown")
