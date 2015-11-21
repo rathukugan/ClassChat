@@ -1,4 +1,5 @@
 
+##Process
 
 For phase three of this project, we had a firm initial plan of what we needed to complete and followed through as best we could with minimal changes to our initial plan.
 
@@ -6,7 +7,7 @@ After our initial meeting, we coalesced a conglomerate of issues into a google d
 
 By keeping the majority of our meetings short and having all members working on the same portion of the application, the product progressed at an ever steady pace towards being a valuable minimum viable product.
 
-##Update Meetings
+
 
 **Update Meeting #1**
 * Time: Monday Nov 16 at 4pm
@@ -29,4 +30,5 @@ Subject: Initial plan declaration and task assignments
 Subject: Feature Removal 
 - Al realized that some features were unclear and unnecessary.
 - Replaced the confusion indicator with a poll at the end of the lecture.
-- Time constraint makes us realize that the professor being able to record answers is not worth the cost.
+- Time constraint makes us realize that the professor being able to record answers is counter-productive.
+- 
