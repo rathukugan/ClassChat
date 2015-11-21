@@ -22,7 +22,11 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
             $courseCode = $_POST['code'];
               //Update database with new edit
             $SQL_del_class = "DELETE FROM classes WHERE code='$courseCode'"; 
+            $SQL_del_students = "DELETE FROM students WHERE code='$courseCode'"; //Remove students from class that just got deleted.
+            $SQL_del_lectures= "DELETE FROM lectures WHERE class='$courseCode'";
             $delete = mysql_query($SQL_del_class);
+            $delete1 = mysql_query($SQL_del_students);
+            $delete2 = mysql_query($SQL_del_lectures);
 
             exit;
         }
