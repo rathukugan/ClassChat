@@ -1,5 +1,45 @@
 <?php include("assets/templates/header.php"); ?>
 
+<script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<?php          
+	session_start();
+    /*connect to database */
+    include("sql.php");
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $courseCode = $_POST['code'];
+
+	    $email = $_SESSION['email'];
+
+        $SQL_del_students = "DELETE FROM students WHERE code='$courseCode' AND email='$email'"; //Remove students from class that just got deleted.
+        $delete = mysql_query($SQL_del_students);
+
+        exit;
+    }
+?>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.rem').on('click', function() {
+			var courseCode = $(this).next().text();
+
+	        var dataObj = {};
+
+	        dataObj["code"]=courseCode;
+
+	        $.ajax({
+	           type: "POST",
+	           data: dataObj,
+	           success: function(){
+	             window.location.href = "profile.php";
+	           }
+	        });
+		});
+	});
+</script>
+
 <?php
 function process_date($raw_date) {
 	$date_elements[0] = substr($raw_date, 0, 4);
@@ -53,7 +93,7 @@ function process_date($raw_date) {
 	$email = htmlspecialchars($email);
 
 	/*connect to database */
-    include("sql.php");
+    //include("sql.php");
 
     $SQL = "SELECT * FROM users WHERE email = '$email'";
     $result = mysql_query($SQL);
@@ -79,7 +119,7 @@ function process_date($raw_date) {
             <br>
             <br>
             <div class= 'text-center'>
-	            <h2 class="title text-center profile_headings">Welcome <?=$name?>, your classes:</h2>
+	            <h2 id="headerName" class="title text-center profile_headings">Welcome <?=$name?>, your classes:</h2>
 				<div id="profile_projects">
 					<table class="table table-striped" style="width: 500px;
 					margin-left:auto; margin-right:auto">
@@ -89,7 +129,9 @@ function process_date($raw_date) {
 							//$id = $row2['id'];
 							?>
 						
-							<tr><td><a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
+							<tr><td>
+							<a class="rem" href="#"><i class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+  							<a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
 						if (!isset($code) && ($_SESSION['type'] == "Professor")){
