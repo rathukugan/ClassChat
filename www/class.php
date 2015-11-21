@@ -5,15 +5,28 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     /*connect to database */
     include("sql.php");
 
+    //Handle AJAX Post requests for editing description or deleting class.
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        //session_start();
-        $newDesc = $_POST['desc'];
-        $courseCode = $_POST['code'];
-          //Update database with new edit
-        $SQLEditDescrip = "UPDATE classes SET description='$newDesc' WHERE code='$courseCode'"; 
-        $update = mysql_query($SQLEditDescrip);
 
-        exit;
+        if(isset($_POST['desc'])) {
+            $newDesc = $_POST['desc'];
+            $courseCode = $_POST['code'];
+              //Update database with new edit
+            $SQLEditDescrip = "UPDATE classes SET description='$newDesc' WHERE code='$courseCode'"; 
+            $update = mysql_query($SQLEditDescrip);
+
+            exit;
+        }
+
+        if(isset($_POST['del'])) {
+            $courseCode = $_POST['code'];
+              //Update database with new edit
+            $SQL_del_class = "DELETE FROM classes WHERE code='$courseCode'"; 
+            $delete = mysql_query($SQL_del_class);
+
+            exit;
+        }
+
     }
 ?>
 
@@ -51,6 +64,23 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         });
 
     });
+
+    //'#del' is the delete button in the popup modal
+    $('#del').click(function() {
+        var dataObj = {};
+        dataObj["del"]="Yes";
+        dataObj["code"]=courseURL;
+
+        $.ajax({
+           type: "POST",
+           data: dataObj,
+           success: function(){
+             alert("Class Deleted. Redirecting to My Classes.");
+             window.location.href = "profile.php";
+           }
+        });
+    });
+
   });
 </script>
 
@@ -103,9 +133,6 @@ function process_date($raw_date) {
 
 ?>
 <?php          
-    /*connect to database */
-    //include("sql.php");
-
     $code = $_GET['code'];
     $SQL = "SELECT * FROM classes WHERE code= '$code'";
     $result = mysql_query($SQL);
@@ -181,10 +208,31 @@ function process_date($raw_date) {
                 //$creator = "'".$creator."'";
                 if (strcmp($currentemail, $creator) == 0){
                     ?>
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure you want to delete this class?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="del">Delete</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                     <!-- Side Widget Well -->
                     <div class="well">
                         <div class="text-center">
-                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="#">Delete Class!</a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Class!</a>
                         <a id="edit" class="btn btn-success" href="#">Edit Class!</a>
                         <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture!</a>
                         </div>
