@@ -24,18 +24,21 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	$(document).ready(function() {
 		$('.rem').on('click', function() {
 			var courseCode = $(this).next().text();
+			$('#dropCourse').text(courseCode);
 
-	        var dataObj = {};
+			$('#del').click(function() {
+		        var dataObj = {};
 
-	        dataObj["code"]=courseCode;
+		        dataObj["code"]=courseCode;
 
-	        $.ajax({
-	           type: "POST",
-	           data: dataObj,
-	           success: function(){
-	             window.location.href = "profile.php";
-	           }
-	        });
+		        $.ajax({
+		           type: "POST",
+		           data: dataObj,
+		           success: function(){
+		             window.location.href = "profile.php";
+		           }
+		        });
+			});
 		});
 	});
 </script>
@@ -118,6 +121,27 @@ function process_date($raw_date) {
             <br>
             <br>
             <br>
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 id="dropCourse" class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Are you sure you want to drop this class?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="del">Drop</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
             <div class= 'text-center'>
 	            <h2 id="headerName" class="title text-center profile_headings">Welcome <?=$name?>, your classes:</h2>
 				<div id="profile_projects">
@@ -130,7 +154,7 @@ function process_date($raw_date) {
 							?>
 						
 							<tr><td>
-							<a class="rem" href="#"><i class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
   							<a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
