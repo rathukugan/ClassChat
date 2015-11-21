@@ -104,6 +104,11 @@ function process_date($raw_date) {
                 <p class="lead"><?=$desc?></p>
 
                 <hr>
+
+                <h4> View Questions </h4>
+                <a class="btn btn-theme" href="questions.php?course=<?=$code?>">View Questions</a>
+
+                <hr>
                 <br>
                 <br>
                 <br>
@@ -146,7 +151,7 @@ function process_date($raw_date) {
                             $id = $row2['id'];
                             ?>
                             <div class="col-sm-6 col-lg-6">
-                                <p><a href="live_lec.php?title=<?=$title?>"><?=$title?></a></p>
+                                <p><a href="live_lec.php?id=<?=$id?>"><?=$title?></a></p>
                             </div>
                         <?php 
                         }
