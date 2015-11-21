@@ -1,5 +1,93 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/
 ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<?php          
+    /*connect to database */
+    include("sql.php");
+
+    //Handle AJAX Post requests for editing description or deleting class.
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        if(isset($_POST['desc'])) {
+            $newDesc = $_POST['desc'];
+            $courseCode = $_POST['code'];
+              //Update database with new edit
+            $SQLEditDescrip = "UPDATE classes SET description='$newDesc' WHERE code='$courseCode'"; 
+            $update = mysql_query($SQLEditDescrip);
+
+            exit;
+        }
+
+        if(isset($_POST['del'])) {
+            $courseCode = $_POST['code'];
+              //Update database with new edit
+            $SQL_del_class = "DELETE FROM classes WHERE code='$courseCode'"; 
+            $SQL_del_students = "DELETE FROM students WHERE code='$courseCode'"; //Remove students from class that just got deleted.
+            $SQL_del_lectures= "DELETE FROM lectures WHERE class='$courseCode'";
+            $delete = mysql_query($SQL_del_class);
+            $delete1 = mysql_query($SQL_del_students);
+            $delete2 = mysql_query($SQL_del_lectures);
+
+            exit;
+        }
+
+    }
+?>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var courseURL = $('#courseCode').text();
+
+    var origDesc = $('#desc').html();
+    var descrip = $('#desc').text()
+    var editDesc = '<input id="newVal" type="text" class="form-control" placeholder="' + descrip + '"> <a id="save" class="btn btn-theme" href="#">Save</a> <a id="cancel" class="btn btn-theme" onclick="" href="#">Cancel</a>';
+    $('#edit').click(function() {
+        $('#desc').html(editDesc);
+
+        $('#cancel').click(function() {
+            $('#desc').html(origDesc);
+        });
+
+        $('#save').click(function() {
+            descrip = $("#newVal").val(); 
+
+            var dataObj = {};
+
+            dataObj["desc"]=descrip;
+            dataObj["code"]=courseURL;
+
+            $.ajax({
+               type: "POST",
+               data: dataObj,
+               success: function(){
+                 alert("Description changed.");
+                 $('#desc').html(origDesc).text(descrip);
+               }
+            });
+
+        });
+
+    });
+
+    //'#del' is the delete button in the popup modal
+    $('#del').click(function() {
+        var dataObj = {};
+        dataObj["del"]="Yes";
+        dataObj["code"]=courseURL;
+
+        $.ajax({
+           type: "POST",
+           data: dataObj,
+           success: function(){
+             alert("Class Deleted. Redirecting to My Classes.");
+             window.location.href = "profile.php";
+           }
+        });
+    });
+
+  });
+</script>
+
 <?php include("assets/templates/header.php"); ?>
 <?php
 function process_date($raw_date) {
@@ -49,15 +137,13 @@ function process_date($raw_date) {
 
 ?>
 <?php          
-    /*connect to database */
-    include("sql.php");
-
     $code = $_GET['code'];
     $SQL = "SELECT * FROM classes WHERE code= '$code'";
     $result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 
     //get project info
+    $courseID = $row['id'];
     $code = $row['code'];
     $desc = $row['description'];
     $creator = $row['creator'];
@@ -84,7 +170,7 @@ function process_date($raw_date) {
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1><?=$code?></h1>
+                <h1 id="courseCode"><?=$code?></h1>
 
 
                 <!-- Author -->
@@ -101,7 +187,7 @@ function process_date($raw_date) {
 
                 <!-- Post Content -->
                 <h4> Class Description </h4>
-                <p class="lead"><?=$desc?></p>
+                <div id="desc"><p class="lead"><?=$desc?></p></div>
 
                 <hr>
 
@@ -126,11 +212,32 @@ function process_date($raw_date) {
                 //$creator = "'".$creator."'";
                 if (strcmp($currentemail, $creator) == 0){
                     ?>
+
+                    <!-- Modal -->
+                    <div id="myModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          </div>
+                          <div class="modal-body">
+                            <p>Are you sure you want to delete this class?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" id="del">Delete</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
                     <!-- Side Widget Well -->
                     <div class="well">
                         <div class="text-center">
-                        <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="#">Delete Class!</a>
-                        <a class="btn btn-success" href="#">Edit Class!</a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Class!</a>
+                        <a id="edit" class="btn btn-success" href="#">Edit Class!</a>
                         <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture!</a>
                         </div>
                     </div>
