@@ -1,5 +1,59 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/
 ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<?php          
+    /*connect to database */
+    include("sql.php");
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        //session_start();
+        $newDesc = $_POST['desc'];
+        $courseCode = $_POST['code'];
+          //Update database with new edit
+        $SQLEditDescrip = "UPDATE classes SET description='$newDesc' WHERE code='$courseCode'"; 
+        $update = mysql_query($SQLEditDescrip);
+
+        exit;
+    }
+?>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var courseURL = $('#courseCode').text();
+
+    var origDesc = $('#desc').html();
+    var descrip = $('#desc').text()
+    var editDesc = '<input id="newVal" type="text" class="form-control" placeholder="' + descrip + '"> <a id="save" class="btn btn-theme" href="#">Save</a> <a id="cancel" class="btn btn-theme" onclick="" href="#">Cancel</a>';
+    $('#edit').click(function() {
+        $('#desc').html(editDesc);
+
+        $('#cancel').click(function() {
+            $('#desc').html(origDesc);
+        });
+
+        $('#save').click(function() {
+            descrip = $("#newVal").val(); 
+
+            var dataObj = {};
+
+            dataObj["desc"]=descrip;
+            dataObj["code"]=courseURL;
+
+            $.ajax({
+               type: "POST",
+               data: dataObj,
+               success: function(){
+                 alert("Description changed.");
+                 $('#desc').html(origDesc).text(descrip);
+               }
+            });
+
+        });
+
+    });
+  });
+</script>
+
 <?php include("assets/templates/header.php"); ?>
 <?php
 function process_date($raw_date) {
@@ -50,7 +104,7 @@ function process_date($raw_date) {
 ?>
 <?php          
     /*connect to database */
-    include("sql.php");
+    //include("sql.php");
 
     $code = $_GET['code'];
     $SQL = "SELECT * FROM classes WHERE code= '$code'";
@@ -58,6 +112,7 @@ function process_date($raw_date) {
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 
     //get project info
+    $courseID = $row['id'];
     $code = $row['code'];
     $desc = $row['description'];
     $creator = $row['creator'];
@@ -84,7 +139,7 @@ function process_date($raw_date) {
                 <!-- Blog Post -->
 
                 <!-- Title -->
-                <h1><?=$code?></h1>
+                <h1 id="courseCode"><?=$code?></h1>
 
 
                 <!-- Author -->
@@ -101,7 +156,7 @@ function process_date($raw_date) {
 
                 <!-- Post Content -->
                 <h4> Class Description </h4>
-                <p class="lead"><?=$desc?></p>
+                <div id="desc"><p class="lead"><?=$desc?></p></div>
 
                 <hr>
 
@@ -130,7 +185,7 @@ function process_date($raw_date) {
                     <div class="well">
                         <div class="text-center">
                         <a class="btn btn-danger" onclick="return confirm('Are you sure?')" href="#">Delete Class!</a>
-                        <a class="btn btn-success" href="#">Edit Class!</a>
+                        <a id="edit" class="btn btn-success" href="#">Edit Class!</a>
                         <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture!</a>
                         </div>
                     </div>
