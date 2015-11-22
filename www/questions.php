@@ -1,10 +1,23 @@
 <?php
+    session_start();
+    
     /*connect to database */
     include("sql.php");
     $course_code = $_GET['course'];
+    $action = $_GET['action'];
+    $q_id = $_GET['id'];
+    if($action == 'delete') {
+        mysql_query("DELETE FROM questions WHERE id = '$q_id'");        
+    }
+    else if($action == 'markAnswered') {
+        mysql_query("UPDATE questions SET answered = 1 WHERE id = '$q_id'");        
+    }
+    else if ($action == 'markUnanswered') {
+        mysql_query("UPDATE questions SET answered = 0 WHERE id = '$q_id'");        
+    }
     //find lecture by id from GET
 
-    $find_questions = mysql_query("SELECT questions.id, question, answer, creator, topic, num FROM lectures, questions WHERE questions.lecture = lectures.id AND lectures.class = '$course_code'");
+    $find_questions = mysql_query("SELECT questions.id, question, answer, creator, topic, num, answered FROM lectures, questions WHERE questions.lecture = lectures.id AND lectures.class = '$course_code'");
 
     //get lecture info  
 ?>
@@ -20,13 +33,15 @@
                 ?>
                  <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">                   
                     <?php
-                    while($row=mysql_fetch_array(mysql_query($find_questions), MYSQL_ASSOC))
+                    while($row=mysql_fetch_array($find_questions))
                     {
+                        $question_id = $row['id'];
                         $lec_num = $row['num'];
                         $topic = $row['topic'];
                         $question = $row['question'];
                         $answer = $row['answer'];
-                        $creator = $row['creator'];            
+                        $creator = $row['creator'];
+                        $answered = $row['answered'];           
                     ?>
                     
                     <tr>
@@ -34,6 +49,19 @@
                         <td><?php echo $question;?></td>
                         <td>Posted By:<?php echo $creator;?></td>
                         <td><?=$lec_num?></td>
+                        <td><a href="questions.php?course=<?=$course_code?>&action=delete&id=<?=$question_id?>">Delete</a></td>
+                        <?php 
+                        if ($answered) {
+                        ?>
+                            <td><a href="questions.php?course=<?=$course_code?>&action=markUnanswered&id=<?=$question_id?>">Mark as Unanswered</a></td>
+                        <?php
+                        }
+                        else {
+                        ?>
+                            <td><a href="questions.php?course=<?=$course_code?>&action=markAnswered&id=<?=$question_id?>">Mark as Answered</a></td>
+                        <?php
+                        }
+                        ?>
                     </tr>
                   
                     <?php
@@ -45,7 +73,7 @@
             }
         ?>
 
-        <?php 
+        <?php
             if($_SESSION['type'] == "Student"){ 
                 ?>
                 <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">
@@ -53,11 +81,13 @@
              
                 while($row=mysql_fetch_array($find_questions))
                 {
+                        $question_id = $row['id'];
                         $lec_num = $row['num'];
                         $topic = $row['topic'];
                         $question = $row['question'];
                         $answer = $row['answer'];
-                        $creator = $row['creator'];           
+                        $creator = $row['creator'];
+                        $answered = $row['answered'];          
                     ?>
                     
                     <tr>
@@ -65,6 +95,29 @@
                         <td><?php echo $question;?></td>
                         <td>Posted By:<?php echo $creator;?></td>
                         <td><?=$lec_num?></td>
+                        <?php
+                            if ($creator == $_SESSION['name']) {
+                                ?>
+                                <td><a href="questions.php?course=<?=$course_code?>&action=delete&id=<?=$question_id?>">Delete</a></td>
+                                <?php 
+                                if ($answered) {
+                                ?>
+                                    <td><a href="questions.php?course=<?=$course_code?>&action=markUnanswered&id=<?=$question_id?>">Mark as Unanswered</a></td>
+                                <?php
+                                }
+                                else {
+                                ?>
+                                    <td><a href="questions.php?course=<?=$course_code?>&action=markAnswered&id=<?=$question_id?>">Mark as Answered</a></td>
+                                <?php
+                                }
+                            }
+                            else {
+                                ?>
+                                <td></td>
+                                <td></td>
+                                <?php
+                            }
+                        ?>
                     </tr>
                   
                     <?php
