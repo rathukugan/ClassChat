@@ -102,10 +102,13 @@ function post()
   return false;
 }
 </script>
-
+<script type="text/javascript" src="assets/js/notifications.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+  //Set up notification permissions
+  notificationSetUp();
+
   // ajax setup
   $.ajaxSetup({
     url: 'upvote.php',
@@ -141,8 +144,12 @@ $(document).ready(function(){
 
 
 <?php include("assets/templates/header.php"); ?>
-<div class="container well" style="margin-top:130px">
 
+<script type="text/javascript" src="assets/js/notifications.js"></script>
+<div class="container well" style="margin-top:130px">
+<?php
+ echo '<input type="hidden" id="logged" value="'.$_SESSION['type'].'">'
+?>
     <div class="row">
         <h2 class="title text-center">Questions for professor <?=$name; ?></h2>
 
@@ -190,11 +197,11 @@ $(document).ready(function(){
                 }
                 ?>
                     <div id="all_comments">
-                    <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">    
+                    <table class="table table-striped" id="questions_table" style="width:600px; margin-left:auto; margin-right: auto">    
                     
                     <?php
                   
-                    $comm = mysql_query("SELECT id, question, creator, postTime, rank from questions where lecture='$lec_id' order by rank desc");
+                    $comm = mysql_query("SELECT id, question, creator, postTime, rank from questions where lecture='$lec_id' order by id");
                     while($row=mysql_fetch_array($comm))
                     {
                       $name=$row['creator'];
@@ -206,7 +213,7 @@ $(document).ready(function(){
                     
                     <tr>
                         <td><a href="#"></a></td>
-                        <td><?php echo $question;?></td>
+                        <td id="student_question"><?php echo $question;?></td>
                         <td>Posted By:<?php echo $name;?></td>
                         <td><?=$time?></td>
                         <td><?=$id?></td>
@@ -278,7 +285,7 @@ $(document).ready(function(){
 
 <script type="text/javascript">
 window.setInterval(function() {
-    // Every 5 seconds send an AJAX request and update the price
+    // Every 5 seconds send an AJAX request and update the table
     $.ajax({
         url: 'check.php',
         type: 'post',
@@ -287,6 +294,9 @@ window.setInterval(function() {
             document.getElementById("all_comments").innerHTML=result;
         }
     });
+
+    //Check if notifications are needed, show them upon need
+    if($('#logged').val() == 'Professor') checkNotificaionNeeds();
 }, 5000); 
 </script>
 

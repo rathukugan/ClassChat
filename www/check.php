@@ -1,11 +1,11 @@
-<table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">  
+<table class="table table-striped" id="questions_table" style="width:600px; margin-left:auto; margin-right: auto">  
 <?php
 session_start();
 include("sql.php");
 
 $lec_id=$_POST['id'];
     
-$comm = mysql_query("SELECT id, question, creator, postTime, rank from questions where lecture='$lec_id' order by rank desc");
+$comm = mysql_query("SELECT id, question, creator, postTime, rank from questions where lecture='$lec_id' order by id");
 while($row=mysql_fetch_array($comm))
 {
   $name=$row['creator'];
@@ -17,7 +17,7 @@ while($row=mysql_fetch_array($comm))
 
 <tr>
     <td><a href="#"></a></td>
-    <td><?php echo $question;?></td>
+    <td id="student_question"><?php echo $question;?></td>
     <td>Posted By:<?php echo $name;?></td>
     <td><?=$time?></td>
     <td><?=$id?></td>
