@@ -17,6 +17,8 @@
     $satisfied = $row['satisfied'];
     $unsatisfied = $row['unsatisfied'];
 
+    $voters_array = explode(",", $voters);
+
     //get course info
     $find_course = "SELECT creator FROM classes WHERE code = '$course'";
 
@@ -43,7 +45,7 @@
     }
 
     /* Students vote in the 'satisfied/unsatisfied' poll */
-    if(!empty($_POST['vote'])){
+    if(!empty($_POST['vote']) && !(in_array($_SESSION['email'], $voters_array)) ){
         $poll = $_POST['poll'];
 
         if ($db_found) {

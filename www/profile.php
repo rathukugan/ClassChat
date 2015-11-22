@@ -167,8 +167,8 @@ function process_date($raw_date) {
 							?>
 						
 							<tr><td>
-							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
-  							<a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
+							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i style="font-size: 25px" class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+  							<a style="font-size: 25px" href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
 						if (!isset($code) && ($_SESSION['type'] == "Professor")){
@@ -185,7 +185,7 @@ function process_date($raw_date) {
 						}
 					?>
 					</table>
-					<a href="room.php">Join other classes!</a>
+					<a style="font-size: 15px; margin-left: 30px" href="room.php">Join other classes!</a>
 				</div>
 				<h2 id="headerName" class="title text-center profile_headings">Questions You asked:</h2>
 				<?php
