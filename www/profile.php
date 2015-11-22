@@ -18,6 +18,19 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
         exit;
     }
+    $action = $_GET['action'];
+    $q_id = $_GET['id'];
+    if($action == 'delete') {
+        mysql_query("DELETE FROM questions WHERE id = '$q_id'");        
+    }
+    else if($action == 'markAnswered') {
+        mysql_query("UPDATE questions SET answered = 1 WHERE id = '$q_id'");        
+    }
+    else if ($action == 'markUnanswered') {
+        mysql_query("UPDATE questions SET answered = 0 WHERE id = '$q_id'");        
+    }
+
+    $find_questions = mysql_query("SELECT questions.id, question, answer, creator, topic, num, answered FROM lectures, questions WHERE lectures.id = questions.lecture AND questions.creator = '" . $_SESSION['name'] . "'");
 ?>
 
 <script type="text/javascript">
@@ -174,6 +187,47 @@ function process_date($raw_date) {
 					</table>
 					<a href="room.php">Join other classes!</a>
 				</div>
+				<h2 id="headerName" class="title text-center profile_headings">Questions You asked:</h2>
+				<?php
+				if($_SESSION['type'] == "Student"){ 
+                ?>
+	                <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">
+	                <?php
+	             
+	                while($row=mysql_fetch_array($find_questions))
+	                {
+	                        $question_id = $row['id'];
+	                        $lec_num = $row['num'];
+	                        $topic = $row['topic'];
+	                        $question = $row['question'];
+	                        $answer = $row['answer'];
+	                        $creator = $row['creator'];
+	                        $answered = $row['answered'];          
+	                    ?>
+	                    
+	                    <tr>
+	                        <td><a href="#"></a></td>
+	                        <td><?php echo $question;?></td>                        
+	                        <td><?=$lec_num?></td>
+                            <td><a href="profile.php?course=<?=$course_code?>&action=delete&id=<?=$question_id?>">Delete</a></td>
+                            <?php 
+                            if ($answered) {
+                            ?>
+                                <td><a href="profile.php?course=<?=$course_code?>&action=markUnanswered&id=<?=$question_id?>">Mark as Unanswered</a></td>
+                            <?php
+                            }
+                            else {
+                            ?>
+                                <td><a href="profile.php?course=<?=$course_code?>&action=markAnswered&id=<?=$question_id?>">Mark as Answered</a></td>
+                            <?php
+                            }
+                            ?>
+	                    </tr>
+	                  
+                    <?php
+                }
+            } ?>
+            	</table>
 			</div>
         </div>
     </section>

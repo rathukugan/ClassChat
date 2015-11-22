@@ -19,6 +19,7 @@
                         <div class="col-sm-12">
                             <br/><br/><br/><a href="room.php" class="btn btn-theme btn-lg">Join a class</a>
                              <a href="profile.php" class="btn btn-theme btn-lg">View Classes</a>
+                             <a href="questions.php" class="btn btn-theme btn-lg">View Questions</a>
                         </div>
                         <?php
                     }

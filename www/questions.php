@@ -15,9 +15,36 @@
     else if ($action == 'markUnanswered') {
         mysql_query("UPDATE questions SET answered = 0 WHERE id = '$q_id'");        
     }
-    //find lecture by id from GET
 
-    $find_questions = mysql_query("SELECT questions.id, question, answer, creator, topic, num, answered FROM lectures, questions WHERE questions.lecture = lectures.id AND lectures.class = '$course_code'");
+    
+    $qry = "SELECT questions.id, question, answer, creator, topic, num, answered FROM lectures, questions, "; 
+
+    // find the classes that the user is enrolled in
+    $email = htmlspecialchars($_SESSION['email']);
+    if ($_SESSION['type'] == "Student") {
+        $classes = "(SELECT * FROM students WHERE email = '$email') AS classes";
+    }
+    else {
+        $classes = "(SELECT * FROM classes WHERE creator = '$email') AS classes";
+    }
+    $qry .= $classes . " WHERE questions.lecture = lectures.id AND classes.code = lectures.class";
+    if($course_code) {
+        $qry .= " AND lectures.class = '" . $course_code . "'";
+    }
+    $answered = $_GET['answered'];
+    if($answered == 1) {
+        $qry .= " AND questions.answered = 1";
+    }
+    else if ($answered == 0) {
+        $qry .= " AND questions.answered = 0";
+    }
+    $lecture = $_GET['lecture'];
+    if ($lecture) {
+        $qry .= " AND question.lecture = '" . $lecture . "'";
+    }
+    echo $qry;
+    $find_questions = mysql_query($qry);
+    $find_classes = mysql_query($classes);
 
     //get lecture info  
 ?>
@@ -26,7 +53,7 @@
 <div class="container well" style="margin-top:130px">
 
     <div class="row">
-        <h2 class="title text-center">Questions for professor ****</h2>
+        <h2 class="title text-center">Questions</h2>
 
         <?php 
             if ($_SESSION['type'] == "Professor"){
@@ -92,8 +119,7 @@
                     
                     <tr>
                         <td><a href="#"></a></td>
-                        <td><?php echo $question;?></td>
-                        <td>Posted By:<?php echo $creator;?></td>
+                        <td><?php echo $question;?></td>                        
                         <td><?=$lec_num?></td>
                         <?php
                             if ($creator == $_SESSION['name']) {
