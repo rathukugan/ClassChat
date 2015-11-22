@@ -136,8 +136,9 @@ function post()
 
 
         <?php 
-            if($_SESSION['type'] == "Student"){ 
+            
                 if($flag == 'ongoing'){
+                    if($_SESSION['type'] == "Student"){ 
                     ?>
                     <div class="row">
                         <div class="col-xs-12">
@@ -150,6 +151,9 @@ function post()
                                 </form>
                         </div>
                     </div>
+                    <?php
+                }
+                ?>
                     <div id="all_comments">
                     <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">    
                     
@@ -216,7 +220,7 @@ function post()
             <?php
                     }
                 }
-            }
+            
         ?>
         <br>
     </div>
