@@ -154,6 +154,9 @@ function process_date($raw_date) {
 	$result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 	$creatorname = $row['name'];
+
+    $creatorId = $row['userid'];
+
 ?>
 
 <!-- Page Content -->
@@ -172,11 +175,20 @@ function process_date($raw_date) {
                 <!-- Title -->
                 <h1 id="courseCode"><?=$code?></h1>
 
-
                 <!-- Author -->
-                <p class="lead">
+                <p class="lead" style="display: inline-block">
                     by <?=$creatorname?>
                 </p>
+
+                <?php
+                    if ($_SESSION['type'] == "Student"){
+                        ?>
+                        <a href="email.php?id=<?php echo $creatorId; ?>">
+                            <button style="margin-left: 20px; margin-bottom: 5px" type="button" class="btn btn-info">Email the Professor</button>
+                        </a>
+                        <?php
+                    }
+                    ?>
 
                 <hr>
 
