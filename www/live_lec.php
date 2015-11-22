@@ -103,6 +103,42 @@ function post()
 }
 </script>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  // ajax setup
+  $.ajaxSetup({
+    url: 'upvote.php',
+    type: 'POST',
+    cache: 'false'
+  });
+
+  // any voting button (up/down) clicked event
+  $('.vote').click(function(){
+    var self = $(this); // cache $this
+    var action = self.data('action'); // grab action data up/down 
+    var parent = self.parent().parent(); // grab grand parent .item
+    var postid = parent.data('postid'); // grab post id from data-postid
+    var score = parent.data('score'); // grab score form data-score
+
+    // only works where is no disabled class
+    if (!parent.hasClass('.disabled')) {
+      // vote up action
+      if (action == 'up') {
+        // increase vote score and color to orange
+        parent.find('.vote-score').html(++score).css({'color':'orange'});
+        // change vote up button color to orange
+        self.css({'color':'orange'});
+        // send ajax request with post id & action
+        $.ajax({data: {'id' : postid, 'action' : 'up'}});
+      }
+      // add disabled class with .item
+      parent.addClass('.disabled');
+    };
+  });
+});
+</script>
+
 
 <?php include("assets/templates/header.php"); ?>
 <div class="container well" style="margin-top:130px">
@@ -134,7 +170,6 @@ function post()
         }
         ?>
 
-
         <?php 
             
                 if($flag == 'ongoing'){
@@ -159,12 +194,14 @@ function post()
                     
                     <?php
                   
-                    $comm = mysql_query("SELECT id, question, creator, postTime from questions where lecture='$lec_id' order by postTime desc");
+                    $comm = mysql_query("SELECT id, question, creator, postTime, rank from questions where lecture='$lec_id' order by rank desc");
                     while($row=mysql_fetch_array($comm))
                     {
                       $name=$row['creator'];
                       $question=$row['question'];
-                      $time=$row['postTime'];           
+                      $time=$row['postTime'];    
+                      $id=$row['id']; 
+                      $rank = $row['rank'];      
                     ?>
                     
                     <tr>
@@ -172,7 +209,19 @@ function post()
                         <td><?php echo $question;?></td>
                         <td>Posted By:<?php echo $name;?></td>
                         <td><?=$time?></td>
-                    </tr>
+                        <td><?=$id?></td>
+                        <td>
+                            <div class="item" data-postid="<?php echo $row['id'] ?>" data-score="<?php echo $row['rank'] ?>">
+                                <div class="vote-span"><!-- voting-->
+                                    <div class="vote" data-action="up" title="Vote up">
+                                      <i class="icon-chevron-up"></i>
+                                    </div><!--vote up-->
+                                    <div class="vote-score"><?php echo $rank ?></div>
+                                    
+                                </div>
+                            </div>
+                        
+                        </td>
                   
                     <?php
                     }
