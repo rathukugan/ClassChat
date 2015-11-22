@@ -3,6 +3,7 @@
 
     include("assets/templates/header.php");
 
+    $success = "";
 
     /* Redirect unauthorized user */
     if($_SESSION['type'] != "Student"){
