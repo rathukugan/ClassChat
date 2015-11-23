@@ -151,7 +151,9 @@ $(document).ready(function(){
  echo '<input type="hidden" id="logged" value="'.$_SESSION['type'].'">'
 ?>
     <div class="row">
-        <h2 class="title text-center">Questions for professor <?=$name; ?></h2>
+    <h3 class="title text-center">Professor: <?=$name; ?></h3>
+    <h3 class="title text-center">Lecture: <?=$topic; ?></h3>
+
 
         <?php 
         if ($_SESSION['type'] == "Professor"){
@@ -166,12 +168,6 @@ $(document).ready(function(){
                 <br><br><br>
                 <?php
             // lecture session has 'ended'
-            } else{
-                ?>
-                <div class="col-sm-12">
-                    <br/><br/><br/><h1 align="center">You have ended the lecture session.</h1>
-                </div>
-                <?php
             }
         }
         ?>
@@ -249,18 +245,11 @@ $(document).ready(function(){
                   </div>    
             <?php   
                 } else{
-                    /* Lecture session has ended */
-                    ?>
-                    <div class="col-sm-12">
-                        <br/><br/><br/><h1 align="center">The lecture session has ended.</h1>
-                    </div>
-
-            <?php
                     $voters_array = explode(",", $voters);
-                    if(in_array($_SESSION['email'], $voters_array)){
+                    if(in_array($_SESSION['email'], $voters_array) || $_SESSION['type'] == 'Professor'){
                         /* User has already voted */
                         ?>
-                        <h3 align="center">Thank you for your vote! Results for lecture satisfaction:</p>
+                        <h3 align="center">Lecture satisfaction results:</p>
                         <p align="center">
                             <span style="font-size: 2.5em; color: green" class="glyphicon glyphicon-thumbs-up"></span>
                             <span style="margin-right: 20px; font-size: 1.5em"> <?php echo $satisfied;?> </span>
@@ -269,6 +258,7 @@ $(document).ready(function(){
                         </h3>
             <?php
                     } else{
+                        if($_SESSION['type'] == 'Student')
                     ?>
                         <!-- Display a poll to students: satisfied vs. unsatisfied -->
                         <div class="col-sm-12">
@@ -281,11 +271,18 @@ $(document).ready(function(){
                                 <div class="radio">
                                     <label><input type="radio" name="poll" value="unsatisfied">Unsatisfied</label>
                                 </div>
+                                <div style="text-align: center">
                                 <input type="submit" name="vote" id="vote" value="Vote" class="btn btn-info">
+                                </div>
                             </form>
                         </div>
             <?php
                     }
+                    ?>
+                    <div style="text-align: center">
+                    <a class="btn btn-lg btn-theme" href="questions.php?course=<?=$code?>">View This Lecture's Questions</a>
+                    </div>
+                    <?php
                 }
             
         ?>

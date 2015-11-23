@@ -148,6 +148,7 @@ function process_date($raw_date) {
     $desc = $row['description'];
     $creator = $row['creator'];
     $date = process_date($row['date']);
+    $invite = $row['invite'];
 	
 	//get creator info
 	$SQL = "SELECT * FROM users WHERE email = '$creator'";
@@ -206,6 +207,8 @@ function process_date($raw_date) {
                 <h4> View Questions </h4>
                 <a class="btn btn-theme" href="questions.php?course=<?=$code?>">View Questions</a>
 
+                <hr>
+                <h4> Invitation code:  <?=$invite?></h4>
                 <hr>
                 <br>
                 <br>

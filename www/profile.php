@@ -157,6 +157,7 @@ function process_date($raw_date) {
             </div>
             <div class= 'text-center'>
 	            <h2 id="headerName" class="title text-center profile_headings">Welcome <?=$name?>, your classes:</h2>
+	            <br>
 				<div id="profile_projects">
 					<table class="table table-striped" style="width: 500px;
 					margin-left:auto; margin-right:auto">
@@ -167,7 +168,9 @@ function process_date($raw_date) {
 							?>
 						
 							<tr><td>
-							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i style="font-size: 25px" class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+							<?php if($_SESSION['type']=='Student'){?>
+							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i style="font-size: 20px; padding: 8px" class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+							<?php } ?>
   							<a style="font-size: 25px" href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
@@ -185,47 +188,36 @@ function process_date($raw_date) {
 						}
 					?>
 					</table>
+
+					<?php
+					if($_SESSION['type'] == "Student"){ 
+	                ?>
 					<a style="font-size: 15px; margin-left: 30px" href="room.php">Join other classes!</a>
+					<?php
+					} 
+	                ?>
+
+
+					<?php
+					if($_SESSION['type'] == "Professor"){ 
+	                ?>
+					<a style="font-size: 15px; margin-left: 30px" href="create.php">+ Create a new class!</a>
+					<?php
+					} 
+	                ?>
 				</div>
-				<h2 id="headerName" class="title text-center profile_headings">Questions You asked:</h2>
 				<?php
 				if($_SESSION['type'] == "Student"){ 
                 ?>
-	                <table class="table table-striped" style="width:600px; margin-left:auto; margin-right: auto">
-	                <?php
-	             
-	                while($row=mysql_fetch_array($find_questions))
-	                {
-	                        $question_id = $row['id'];
-	                        $lec_num = $row['num'];
-	                        $topic = $row['topic'];
-	                        $question = $row['question'];
-	                        $answer = $row['answer'];
-	                        $creator = $row['creator'];
-	                        $answered = $row['answered'];          
-	                    ?>
 	                    
-	                    <tr>
-	                        <td><a href="#"></a></td>
-	                        <td><?php echo $question;?></td>                        
-	                        <td><?=$lec_num?></td>
-                            <td><a href="profile.php?course=<?=$course_code?>&action=delete&id=<?=$question_id?>">Delete</a></td>
-                            <?php 
-                            if ($answered) {
-                            ?>
-                                <td><a href="profile.php?course=<?=$course_code?>&action=markUnanswered&id=<?=$question_id?>">Mark as Unanswered</a></td>
-                            <?php
-                            }
-                            else {
-                            ?>
-                                <td><a href="profile.php?course=<?=$course_code?>&action=markAnswered&id=<?=$question_id?>">Mark as Answered</a></td>
-                            <?php
-                            }
-                            ?>
-	                    </tr>
+				<br>
+                    <div style="text-align: center">
+                    <a class="btn btn-theme" style="margin-left: 30px" href="questions.php?course=<?=$code?>">View All My Questions</a>
+                    </div>
+	                    
 	                  
                     <?php
-                }
+                
             } ?>
             	</table>
 			</div>
