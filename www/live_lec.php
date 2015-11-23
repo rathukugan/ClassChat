@@ -214,7 +214,13 @@ $(document).ready(function(){
                     <tr>
                         <td><a href="#"></a></td>
                         <td id="student_question"><?php echo $question;?></td>
+                        <?php
+                        if($_SESSION['type'] == "Professor"){ ?>
                         <td>Posted By:<?php echo $name;?></td>
+                        <?php
+                    } elseif ($_SESSION['type'] == "Professor") { ?>
+                        <td>Posted By:<?php echo $name;?></td>
+                    <?php } ?>
                         <td><?=$time?></td>
                         <td><?=$id?></td>
                         <td>
