@@ -92,7 +92,7 @@ function post()
       },
       success: function (response) 
       {
-        document.getElementById("all_comments").innerHTML=response+document.getElementById("all_comments").innerHTML;
+        document.getElementById("questions_table").innerHTML=document.getElementById("all_comments").innerHTML + response;
         document.getElementById("comment").value="";
   
       }
@@ -159,12 +159,11 @@ $(document).ready(function(){
             if($flag == 'ongoing'){
                 ?>
                 <form action="" method="post" role="form">
-                    <br/><br/><br/>
                     <div class="col-md-7 text-center"> 
-                        <input type="submit" name="end_lecture" id="end_lecture" value="End Lecture Session" class="btn btn-info pull-right">
+                        <input type="submit" name="end_lecture" id="end_lecture" value="End Lecture Session" class="btn btn-danger pull-right">
                     </div>
                 </form>
-                
+                <br><br><br>
                 <?php
             // lecture session has 'ended'
             } else{
@@ -197,8 +196,14 @@ $(document).ready(function(){
                 }
                 ?>
                     <div id="all_comments">
-                    <table class="table table-striped" id="questions_table" style="width:600px; margin-left:auto; margin-right: auto">    
-                    
+                    <table class="table table-striped" id="questions_table" style="table-layout:fixed; word-wrap: break-word;
+    overflow-wrap: break-word; width: 800px; max-width:800px; display: block; margin-left:auto; margin-right: auto">    
+                    <tr>
+                        <th width="200"></th>
+                        <th width="400">Question</th>
+                        <th width="100">Date</th>
+                        <th width="100">Rank</th>
+                    </tr>
                     <?php
                   
                     $comm = mysql_query("SELECT id, question, creator, postTime, rank from questions where lecture='$lec_id' order by id");
@@ -212,30 +217,30 @@ $(document).ready(function(){
                     ?>
                     
                     <tr>
-                        <td><a href="#"></a></td>
-                        <td id="student_question"><?php echo $question;?></td>
-                        <?php
-                        if($_SESSION['type'] == "Professor"){ ?>
-                        <td>Posted By:<?php echo $name;?></td>
-                        <?php
-                    } elseif ($_SESSION['type'] == "Professor") { ?>
-                        <td>Posted By:<?php echo $name;?></td>
-                    <?php } ?>
-                        <td><?=$time?></td>
-                        <td><?=$id?></td>
-                        <td>
-                            <div class="item" data-postid="<?php echo $row['id'] ?>" data-score="<?php echo $row['rank'] ?>">
-                                <div class="vote-span"><!-- voting-->
-                                    <div class="vote" data-action="up" title="Vote up">
-                                      <i class="icon-chevron-up"></i>
-                                    </div><!--vote up-->
-                                    <div class="vote-score"><?php echo $rank ?></div>
-                                    
+                            <td width="200">
+                            <?php
+                                if($_SESSION['type'] == 'Professor') echo $name;
+                                else if($_SESSION['email'] == $name) echo "Resolve";
+                            ?></td>
+                            <td width="400" id="student_question"><?php echo $question;?></td>
+                            <td width="100" >
+                                <?php $timestamp = strtotime($time);
+                                      echo date("g:s A", $timestamp);
+                                ?>
+                            </td>
+                            <td width="100">
+                                <div class="item" data-postid="<?php echo $row['id'] ?>" data-score="<?php echo $row['rank'] ?>">
+                                    <div class="vote-span"><!-- voting-->
+                                        <div class="vote" data-action="up" title="Vote up">
+                                          <span class="vote-score"><?php echo $rank ?></span>  
+                                          <?php if ($_SESSION['type'] == "Student"){ ?>
+                                            <i class="icon-chevron-up"></i>
+                                          <?php } ?>
+                                        </div><!--vote up-->
+                                    </div>
                                 </div>
-                            </div>
-                        
-                        </td>
-                  
+                            </td>
+                        </tr>
                     <?php
                     }
 

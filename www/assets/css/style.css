@@ -490,7 +490,7 @@ csmall2 {
 .vote-span{
   width: 60px;
   float: left;
-  margin: 5px 0;
+  margin: 0 0;
 }
 .vote, .vote-score{
   clear: both;
@@ -498,7 +498,7 @@ csmall2 {
   cursor: pointer;
   text-align: center;
   color: #333;
-  font-size: 1.8em;
+  font-size: 1em;
   font-weight: bold;
 }
 .vote-score{cursor: text}

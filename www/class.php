@@ -248,9 +248,9 @@ function process_date($raw_date) {
                     <!-- Side Widget Well -->
                     <div class="well">
                         <div class="text-center">
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Class!</a>
-                        <a id="edit" class="btn btn-success" href="#">Edit Class!</a>
-                        <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture!</a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Class</a>
+                        <a id="edit" class="btn btn-success" href="#">Edit Class</a>
+                        <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture</a>
                         </div>
                     </div>
                     <?php

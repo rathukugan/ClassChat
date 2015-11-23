@@ -33,7 +33,7 @@
     }
 ?>
 
-
+<br><br><br>
     <div id="login-overlay" class="modal-dialog">
         <p id="success" style="font-size: 20px; color:green"><?php echo $success; ?></p>
         <div class="modal-content">
