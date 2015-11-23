@@ -23,7 +23,7 @@ Subject: Initial plan declaration and task assignments
 - Ended meeting with a rotation of firm high-fives supplanting our already strong team bond.
 
 **Update Meeting #2**
-* Time: Thursday Nov 18 at 8pm
+* Time: Thursday Nov 19 at 8pm
 * Location: Online meeting on Slack
 * Participants: The Entire Team! Al, Kevin, Tommy, Dennis, Sarkhan, Rath
 
@@ -33,7 +33,7 @@ Subject: Feature Removal
 - Time constraint makes us realize that the professor being able to record answers is counter-productive.
 
 **Update Meeting #3**
-* Time: Sunday Nov 18 at 3pm
+* Time: Sunday Nov 22 at 3pm
 * Location: Online meeting on Slack
 * Participants:  Al, Dennis, Sarkhan, Rath
 
