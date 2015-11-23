@@ -31,7 +31,7 @@ Subject: Feature Removal
 - Al realized that some features were unclear and unnecessary.
 - Replaced the confusion indicator with a poll at the end of the lecture.
 - Time constraint makes us realize that the professor being able to record answers is counter-productive.
-- 
+
 **Update Meeting #3**
 * Time: Sunday Nov 18 at 3pm
 * Location: Online meeting on Slack
