@@ -148,12 +148,16 @@ function process_date($raw_date) {
     $desc = $row['description'];
     $creator = $row['creator'];
     $date = process_date($row['date']);
+    $invite = $row['invite'];
 	
 	//get creator info
 	$SQL = "SELECT * FROM users WHERE email = '$creator'";
 	$result = mysql_query($SQL);
     $row = mysql_fetch_array($result, MYSQL_ASSOC);
 	$creatorname = $row['name'];
+
+    $creatorId = $row['userid'];
+
 ?>
 
 <!-- Page Content -->
@@ -172,11 +176,20 @@ function process_date($raw_date) {
                 <!-- Title -->
                 <h1 id="courseCode"><?=$code?></h1>
 
-
                 <!-- Author -->
-                <p class="lead">
+                <p class="lead" style="display: inline-block">
                     by <?=$creatorname?>
                 </p>
+
+                <?php
+                    if ($_SESSION['type'] == "Student"){
+                        ?>
+                        <a href="email.php?id=<?php echo $creatorId; ?>">
+                            <button style="margin-left: 20px; margin-bottom: 5px" type="button" class="btn btn-info">Email the Professor</button>
+                        </a>
+                        <?php
+                    }
+                    ?>
 
                 <hr>
 
@@ -194,6 +207,8 @@ function process_date($raw_date) {
                 <h4> View Questions </h4>
                 <a class="btn btn-theme" href="questions.php?course=<?=$code?>">View Questions</a>
 
+                <hr>
+                <h4> Invitation code:  <?=$invite?></h4>
                 <hr>
                 <br>
                 <br>
@@ -236,9 +251,9 @@ function process_date($raw_date) {
                     <!-- Side Widget Well -->
                     <div class="well">
                         <div class="text-center">
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Class!</a>
-                        <a id="edit" class="btn btn-success" href="#">Edit Class!</a>
-                        <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture!</a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Class</a>
+                        <a id="edit" class="btn btn-success" href="#">Edit Class</a>
+                        <a class="btn btn-primary" href="new_lecture.php?course=<?=$code?>">New Lecture</a>
                         </div>
                     </div>
                     <?php

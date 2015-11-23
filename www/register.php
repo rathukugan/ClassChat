@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <div id="login-overlay" class="modal-dialog" style="margin-top:100px">
       <div class="modal-content">
           <div class="modal-header">
-              <h4 class="modal-title" id="myModalLabel">Register</h4>
+              <h4 class="modal-title" id="myModalLabel">Register for ClassChat!</h4>
           </div>
           <div class="modal-body">
               <div class="row">

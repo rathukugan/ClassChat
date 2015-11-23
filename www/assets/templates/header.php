@@ -17,7 +17,7 @@ function echoActiveClassIfRequestMatches($requestUri)
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
 
     <title>ClassChat</title>
 
@@ -27,15 +27,16 @@ function echoActiveClassIfRequestMatches($requestUri)
     <!-- Custom styles for this template -->
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 
     <!--Date picker -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/redmond/jquery-ui.css" type="text/css" />
-    <link rel="stylesheet" href="/assets/js/datepicker/css/ui.daterangepicker.css" type="text/css" />
+    <link rel="stylesheet" href="assets/js/datepicker/css/ui.daterangepicker.css" type="text/css" />
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="/assets/js/datepicker/js/date.js"></script>
-    <script type="text/javascript" src="/assets/js/datepicker/js/daterangepicker.jQuery.js"></script>
+    <script type="text/javascript" src="assets/js/datepicker/js/date.js"></script>
+    <script type="text/javascript" src="assets/js/datepicker/js/daterangepicker.jQuery.js"></script>
     <script type="text/javascript">
       $(function(){
           $('#rangeA').daterangepicker();
@@ -44,8 +45,7 @@ function echoActiveClassIfRequestMatches($requestUri)
           $('#rangeD').daterangepicker();
           $('#rangeE').daterangepicker({constrainDates: true});
        });
-    </script>    
-    <script src="assets/js/modernizr.js"></script>
+    </script>
   </head>
 
   <body>

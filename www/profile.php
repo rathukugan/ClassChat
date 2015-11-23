@@ -18,6 +18,19 @@ ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
         exit;
     }
+    $action = $_GET['action'];
+    $q_id = $_GET['id'];
+    if($action == 'delete') {
+        mysql_query("DELETE FROM questions WHERE id = '$q_id'");        
+    }
+    else if($action == 'markAnswered') {
+        mysql_query("UPDATE questions SET answered = 1 WHERE id = '$q_id'");        
+    }
+    else if ($action == 'markUnanswered') {
+        mysql_query("UPDATE questions SET answered = 0 WHERE id = '$q_id'");        
+    }
+
+    $find_questions = mysql_query("SELECT questions.id, question, answer, creator, topic, num, answered FROM lectures, questions WHERE lectures.id = questions.lecture AND questions.creator = '" . $_SESSION['name'] . "'");
 ?>
 
 <script type="text/javascript">
@@ -144,6 +157,7 @@ function process_date($raw_date) {
             </div>
             <div class= 'text-center'>
 	            <h2 id="headerName" class="title text-center profile_headings">Welcome <?=$name?>, your classes:</h2>
+	            <br>
 				<div id="profile_projects">
 					<table class="table table-striped" style="width: 500px;
 					margin-left:auto; margin-right:auto">
@@ -154,8 +168,10 @@ function process_date($raw_date) {
 							?>
 						
 							<tr><td>
-							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
-  							<a href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
+							<?php if($_SESSION['type']=='Student'){?>
+							<a class="rem" data-toggle="modal" data-target="#myModal" href="#"><i style="font-size: 20px; padding: 8px" class="pull-left remove glyphicon glyphicon-remove-sign glyphicon-white"></i></a>
+							<?php } ?>
+  							<a style="font-size: 25px" href="class.php?code=<?=$code?>"><?=$code?></a></td></tr>
 						<?php 
 						}
 						if (!isset($code) && ($_SESSION['type'] == "Professor")){
@@ -172,8 +188,38 @@ function process_date($raw_date) {
 						}
 					?>
 					</table>
-					<a href="room.php">Join other classes!</a>
+
+					<?php
+					if($_SESSION['type'] == "Student"){ 
+	                ?>
+					<a style="font-size: 15px; margin-left: 30px" href="room.php">Join other classes!</a>
+					<?php
+					} 
+	                ?>
+
+
+					<?php
+					if($_SESSION['type'] == "Professor"){ 
+	                ?>
+					<a style="font-size: 15px; margin-left: 30px" href="create.php">+ Create a new class!</a>
+					<?php
+					} 
+	                ?>
 				</div>
+				<?php
+				if($_SESSION['type'] == "Student"){ 
+                ?>
+	                    
+				<br>
+                    <div style="text-align: center">
+                    <a class="btn btn-theme" style="margin-left: 30px" href="questions.php?course=<?=$code?>">View All My Questions</a>
+                    </div>
+	                    
+	                  
+                    <?php
+                
+            } ?>
+            	</table>
 			</div>
         </div>
     </section>
