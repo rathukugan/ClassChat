@@ -1,7 +1,7 @@
 
 ##Process
 
-For phase three of this project, we had a firm initial plan of what we needed to complete and followed through as best we could with minimal changes to our initial plan.
+For phase three of this project, we had a firm initial plan of what we needed to complete and followed through as best we could with minimal changes to our initial plan. 
 
 After our initial meeting, we gathered all of the tasks needed to be done into a google docs document and had our 'scrum master' divide up the work and assign tasks. Each task was moved to an issue in github, and assigned a difficulty label and a team member. Compared to phase two, each issue was much more difficult by nature and we therefore had much less issues to close by the end of the phase. Thankfully, by using facebook group messenger and slack, we deployed an active system of communication regarding each member's current progress on each issue. We also used these online messenging systems to sort out any mix-ups regarding the direction of the application, and to confirm compatibility between each section being worked on independantly. Because each of us had our own unique but busy schedules, most meetings and discussions took place online. While they were less comprehensive than in-person meetings, we were able to have constant and frequent feedback of the current state of the application. We also decided to have everybody work on some part of the back-end, and to generally have more coding done by the members who committed less code in the previous phase. There was enough front-end to make the application function, and the real value was delivered by the back-end server and accompanying database. Therefore, most if not all work was done implementing features to our existing codebase.
 
@@ -31,6 +31,17 @@ Subject: Feature Removal
 - Al realized that some features were unclear and unnecessary.
 - Replaced the confusion indicator with a poll at the end of the lecture.
 - Time constraint makes us realize that the professor being able to record answers is counter-productive.
+
+**Update Meeting #3**
+* Time: Sunday Nov 18 at 3pm
+* Location: Online meeting on Slack
+* Participants:  Al, Dennis, Sarkhan, Rath
+
+Subject: Deliverables completion confirmation   
+- Process.md and Planning.md status update.
+- Sorted out bugs between Dennis's attempted implementation of the anonymity feature  
+- Plans for the demo on monday and discussion of having a user persona / user story walkthrough.
+- Some Issues still left open for the next phase - members agree on MVP reached for this phase.
 
 **Burndown Charts**
 
